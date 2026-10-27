@@ -36,7 +36,7 @@ export const products: Product[] = [
     },
     {
         "id":  "saint-aix-aix-rose-2025-750-ml",
-        "name":  "Provence Rose",
+        "name":  "Provence Rosé",
         "brand":  "AIX",
         "category":  "rose",
         "detail":  "Provence, France · 750 ml",

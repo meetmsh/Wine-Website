@@ -12,7 +12,8 @@ import { TastingsTeaser } from "./Tastings";
 import { Subscribe } from "./Subscribe";
 import { SeasonalBanner } from "./SeasonalBanner";
 import { bestSellers } from "@/lib/content";
-import { HeroBottle, WineDiscovery } from "./WineDiscovery";
+import { HeroBottle } from "./WineDiscovery";
+import { VineyardsBanner } from "./Vineyards";
 import styles from "./Storefront.module.css";
 
 const slides = [
@@ -138,5 +139,5 @@ export function BestSellers() {
 }
 
 export function Storefront() {
-  return <><WineDeal /><StoreHero /><div className={`container ${styles.previewNote}`}>A taste of what’s possible. Product selections and prices shown are samples; visit our live store for current availability.</div><WineDiscovery /><ProductShelf index={0} /><SeasonalBanner placement="home-top" /><Collections /><BestSellers /><TastingsTeaser /><ProductShelf index={1} /><div className={styles.subscribeSpot}><Subscribe /></div><ProductShelf index={2} /><ProductShelf index={3} /></>;
+  return <><WineDeal /><StoreHero /><div className={`container ${styles.previewNote}`}>A taste of what’s possible. Product selections and prices shown are samples; visit our live store for current availability.</div><ProductShelf index={0} /><VineyardsBanner /><SeasonalBanner placement="home-top" /><Collections /><BestSellers /><TastingsTeaser /><ProductShelf index={1} /><div className={styles.subscribeSpot}><Subscribe /></div><ProductShelf index={2} /><ProductShelf index={3} /></>;
 }

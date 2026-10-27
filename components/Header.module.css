@@ -203,3 +203,7 @@
 
 /* Phones use the ☰ menu only; the scrolling category row is desktop/tablet only */
 @media(max-width:700px) { .navWrap { display: none; }.header { top: -62px; } }
+
+/* Search placement only; its look lives in SearchBox.module.css */
+.searchSlot { min-width: 0; }
+@media(max-width:700px) { .searchSlot { grid-row: 2; grid-column: 1 / -1; width: 100%; } }

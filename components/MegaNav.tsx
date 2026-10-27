@@ -58,7 +58,7 @@ export function MegaNav() {
             const state = active === null ? "after" : i === active ? "active" : i < active ? "before" : "after";
             return <div key={item.id} id={`category-panel-${i}`} ref={el => { panels.current[i] = el; }} className={styles.panel} data-state={state} aria-hidden={active !== i} inert={active !== i}>
               <div className={styles.panelMain}>
-                <div className={styles.panelHead}><p className={styles.panelTitle}>{item.label}</p><p className={styles.panelText}>{item.intro}</p></div>
+                <div className={styles.panelHead}><p className={styles.panelTitle}>{item.deal ? `${item.label} wine` : item.label}</p><p className={styles.panelText}>{item.intro}</p></div>
                 <div className={styles.panelCols}>{item.groups.map(g => <div key={g.title} className={styles.panelCol}><p>{g.title}</p><ul>{g.links.map(l => <li key={l.label}><Link href={l.href} tabIndex={active === i ? 0 : -1} onClick={close}>{l.label}</Link></li>)}</ul></div>)}</div>
                 {item.deal && <Link href={item.href} tabIndex={active === i ? 0 : -1} className={styles.panelDeal} onClick={close}><b>Mix 4+ bottles, save up to 22%</b> · applied automatically in your bag <Icon name="arrow" width="14" height="14" /></Link>}
               </div>

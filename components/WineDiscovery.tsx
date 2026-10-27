@@ -5,12 +5,6 @@ import { money, onSale, priceOf } from "@/lib/store";
 import { Icon } from "./Icon";
 import styles from "./WineDiscovery.module.css";
 
-const stylesOfWine = [
-  { id: "red", name: "Red", note: "Depth & character" },
-  { id: "white", name: "White", note: "Bright & expressive" },
-  { id: "rose", name: "Rosé", note: "A little sunshine" },
-  { id: "sparkling", name: "Sparkling", note: "Make it an occasion" },
-];
 
 export function HeroBottle({ id }: { id: string }) {
   const product = products.find(p => p.id === id);
@@ -22,11 +16,3 @@ export function HeroBottle({ id }: { id: string }) {
   </Link>;
 }
 
-export function WineDiscovery() {
-  return <section className={`container ${styles.discovery}`} aria-labelledby="wine-discovery-title">
-    <h2 id="wine-discovery-title">Find your <em>kind of wine.</em></h2>
-    <nav aria-label="Explore wine styles"><ul>{stylesOfWine.map(wine => <li key={wine.id}>
-      <Link href={`/shop?category=${wine.id}`}><span className={styles.wineName}>{wine.name}<Icon name="arrow" width="18" height="18" /></span><span className={styles.wineNote}>{wine.note}</span></Link>
-    </li>)}</ul></nav>
-  </section>;
-}

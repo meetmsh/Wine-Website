@@ -51,27 +51,36 @@ export type NavItem = { id: string; label: string; href: string; intro?: string;
 const wine = (extra: Record<string, string>) => shopHref({ type: "Wine", ...extra });
 const links = (key: string, values: string[], base: Record<string, string>) => values.map(v => ({ label: v, href: shopHref({ ...base, [key]: v }) }));
 
+// Main menu: wine leads with a panel per style, then spirits, beer, ready to drink, cigars and gift cards.
+const wineStyle = (style: string, extra: Record<string, string> = {}) => wine({ style, ...extra });
 export const navMenu: NavItem[] = [
-  { id: "wine", label: "Wine", href: wine({}), intro: "From weeknight reds to bottles worth saving.", deal: true, groups: [
-    { title: "By style", links: [...links("style", ["Red", "White", "Rosé & Blush", "Champagne & Sparkling", "Dessert & Port"], { type: "Wine" }), { label: "Other wines", href: wine({ style: "Other" }) }] },
-    { title: "By varietal", links: [...links("varietal", ["Cabernet Sauvignon", "Chardonnay", "Sauvignon Blanc", "Red Blends", "Pinot Noir", "Pinot Grigio"], { type: "Wine" }), { label: "Rosé", href: wine({ varietal: "Rosé" }) }] },
-    { title: "By country", links: links("country", ["France", "Italy", "Spain", "Germany", "Argentina", "United States", "New Zealand"], { type: "Wine" }) },
-    { title: "By region", links: links("region", ["Bordeaux", "Tuscany", "Rioja", "Burgundy", "Napa Valley"], { type: "Wine" }) },
-    { title: "Explore", links: [{ label: "New arrivals", href: wine({ new: "1" }) }, { label: "On sale", href: wine({ sale: "1" }) }, { label: "Non-alcoholic wine", href: shopHref({ collection: "non-alcoholic" }) }, { label: "All wine", href: wine({}) }] },
+  { id: "red", label: "Red", href: wineStyle("Red"), intro: "Structured, generous, made for the table.", featured: "red", deal: true, groups: [
+    { title: "Grapes", links: links("varietal", ["Cabernet Sauvignon", "Pinot Noir", "Sangiovese", "Merlot", "Malbec", "Red Blends"], { type: "Wine", style: "Red" }) },
+    { title: "Regions", links: links("region", ["Tuscany", "Bordeaux", "Burgundy", "Napa Valley", "Rioja"], { type: "Wine", style: "Red" }) },
+    { title: "Shop", links: [{ label: "On sale", href: wineStyle("Red", { sale: "1" }) }, { label: "New arrivals", href: wineStyle("Red", { new: "1" }) }, { label: "All red wine", href: wineStyle("Red") }] },
   ] },
-  { id: "beer", label: "Beer", href: shopHref({ type: "Beer" }), intro: "Independent minds. Very good brews.", featured: "beer", groups: [
-    { title: "By type", links: links("varietal", ["IPA", "Hard Seltzer", "Ale", "Lager", "Pilsner", "Stout"], { type: "Beer" }) },
-    { title: "Explore", links: [{ label: "Kane Brewing Co.", href: shopHref({ type: "Beer", brand: "Kane Brewing Co." }) }, { label: "New arrivals", href: shopHref({ type: "Beer", new: "1" }) }, { label: "Non-alcoholic beer", href: shopHref({ collection: "non-alcoholic" }) }, { label: "All beer", href: shopHref({ type: "Beer" }) }] },
+  { id: "white", label: "White", href: wineStyle("White"), intro: "From crisp and mineral to round and golden.", featured: "white", deal: true, groups: [
+    { title: "Grapes", links: links("varietal", ["Chardonnay", "Sauvignon Blanc", "Pinot Grigio", "Riesling", "Albariño"], { type: "Wine", style: "White" }) },
+    { title: "Regions", links: links("region", ["Burgundy", "Loire Valley", "Napa Valley", "Paso Robles", "Marlborough"], { type: "Wine", style: "White" }) },
+    { title: "Shop", links: [{ label: "On sale", href: wineStyle("White", { sale: "1" }) }, { label: "New arrivals", href: wineStyle("White", { new: "1" }) }, { label: "All white wine", href: wineStyle("White") }] },
+  ] },
+  { id: "rose", label: "Rosé", href: wineStyle("Rosé & Blush"), intro: "Pale, dry and made for every season.", featured: "rose", deal: true, groups: [
+    { title: "Regions", links: links("region", ["Provence", "Loire Valley", "Tavel", "California"], { type: "Wine", style: "Rosé & Blush" }) },
+    { title: "Shop", links: [{ label: "On sale", href: wineStyle("Rosé & Blush", { sale: "1" }) }, { label: "New arrivals", href: wineStyle("Rosé & Blush", { new: "1" }) }, { label: "All rosé", href: wineStyle("Rosé & Blush") }] },
+  ] },
+  { id: "sparkling", label: "Sparkling", href: wineStyle("Champagne & Sparkling"), intro: "For the toast, or just a Tuesday.", featured: "sparkling", deal: true, groups: [
+    { title: "Styles", links: ["Champagne", "Prosecco", "Cava", "Crémant"].map(label => ({ label, href: wineStyle("Champagne & Sparkling", { q: label }) })) },
+    { title: "Shop", links: [{ label: "On sale", href: wineStyle("Champagne & Sparkling", { sale: "1" }) }, { label: "All sparkling", href: wineStyle("Champagne & Sparkling") }] },
   ] },
   { id: "spirits", label: "Spirits", href: shopHref({ type: "Spirits" }), intro: "For your bar cart and your next great cocktail.", featured: "spirits", groups: [
-    { title: "By type", links: links("varietal", ["Vodka", "Whiskey", "Sake", "Tequila", "Rum", "Gin", "Brandy", "Liqueur"], { type: "Spirits" }) },
-    { title: "By country", links: links("country", ["United States", "France", "Ireland", "Japan", "Italy", "Mexico"], { type: "Spirits" }) },
-    { title: "Explore", links: [{ label: "New arrivals", href: shopHref({ type: "Spirits", new: "1" }) }, { label: "On sale", href: shopHref({ type: "Spirits", sale: "1" }) }, { label: "Non-alcoholic spirits", href: shopHref({ collection: "non-alcoholic" }) }, { label: "All spirits", href: shopHref({ type: "Spirits" }) }] },
+    { title: "By type", links: links("varietal", ["Whiskey", "Tequila", "Vodka", "Gin", "Rum", "Liqueur"], { type: "Spirits" }) },
+    { title: "Shop", links: [{ label: "On sale", href: shopHref({ type: "Spirits", sale: "1" }) }, { label: "New arrivals", href: shopHref({ type: "Spirits", new: "1" }) }, { label: "All spirits", href: shopHref({ type: "Spirits" }) }] },
   ] },
+  { id: "beer", label: "Beer", href: shopHref({ type: "Beer" }), intro: "Independent minds. Very good brews.", featured: "beer", groups: [
+    { title: "By type", links: links("varietal", ["IPA", "Lager", "Pilsner", "Stout", "Ale", "Hard Seltzer"], { type: "Beer" }) },
+    { title: "Shop", links: [{ label: "New arrivals", href: shopHref({ type: "Beer", new: "1" }) }, { label: "All beer", href: shopHref({ type: "Beer" }) }] },
+  ] },
+  { id: "rtd", label: "Ready to drink", href: shopHref({ type: "Ready to drink" }) },
   { id: "cigars", label: "Cigars", href: shopHref({ collection: "cigars" }) },
-  { id: "natural", label: "Natural Wine", href: shopHref({ collection: "natural" }) },
-  { id: "alternative", label: "Alternative Beverages", href: shopHref({ type: "Ready to drink" }) },
-  { id: "non-alcoholic", label: "Non-Alcoholic", href: shopHref({ collection: "non-alcoholic" }) },
   { id: "gift-cards", label: "eGift Cards", href: shopHref({ collection: "gift-cards" }) },
-  { id: "events", label: "Events", href: "/tastings" },
 ];
