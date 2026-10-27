@@ -12,6 +12,7 @@ import { TastingsTeaser } from "./Tastings";
 import { Subscribe } from "./Subscribe";
 import { SeasonalBanner } from "./SeasonalBanner";
 import { bestSellers } from "@/lib/content";
+import { HeroBottle, WineDiscovery } from "./WineDiscovery";
 import styles from "./Storefront.module.css";
 
 const slides = [
@@ -57,7 +58,7 @@ export function StoreHero() {
     {slides.map((s,i) => <Image key={s.image} className={`${styles.heroPhoto} ${i === active ? styles.activePhoto : ""}`} src={s.image} alt="" aria-hidden="true" fill sizes="100vw" quality={82} priority={i === 0} style={{ "--pos": s.position, "--pos-m": s.positionMobile } as React.CSSProperties} />)}
     <div className={styles.shade} />
     <div className={`container ${styles.heroInner}`}><div className={styles.campaign} key={active}><h1>{slide.title}</h1><p>{slide.text}</p><Link href={slide.href} className="btn">{slide.cta}<Icon name="arrow" width="18" /></Link><Link href="#wines-of-the-week" className={styles.heroSecondary}>Discover this week’s wines</Link></div>
-      <div className={styles.heroBottom}><div className={styles.slideControls}><div role="group" aria-label="Choose a slide">{slides.map((s,i) => <button key={s.name} onClick={e => { setInstant(e.detail === 0); setActive(i); }} aria-label={`Show slide ${i+1}: ${s.name}`} aria-pressed={active === i}><span /></button>)}</div><button className={styles.pause} onClick={() => setPaused(!paused)} aria-label={paused ? "Play slideshow" : "Pause slideshow"}>{paused ? <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="m4 2 8 5-8 5Z" fill="currentColor" /></svg> : <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2v10M10 2v10" stroke="currentColor" strokeWidth="2" /></svg>}</button></div><span className={styles.heroLocation}>YOUR NEIGHBORHOOD. YOUR NEXT FAVORITE.</span><div className={styles.arrows}><button onClick={e => { setInstant(e.detail === 0); setActive(n => (n + slides.length - 1) % slides.length); }} aria-label="Previous slide"><Icon name="arrow" style={{ transform: "rotate(180deg)" }} width="17" /></button><button onClick={e => { setInstant(e.detail === 0); setActive(n => (n + 1) % slides.length); }} aria-label="Next slide"><Icon name="arrow" width="17" /></button></div></div>
+      <HeroBottle id={active === 0 ? "mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml" : "justin-chardonnay-2023-750-ml"} /><div className={styles.heroBottom}><div className={styles.slideControls}><div role="group" aria-label="Choose a slide">{slides.map((s,i) => <button key={s.name} onClick={e => { setInstant(e.detail === 0); setActive(i); }} aria-label={`Show slide ${i+1}: ${s.name}`} aria-pressed={active === i}><span /></button>)}</div><button className={styles.pause} onClick={() => setPaused(!paused)} aria-label={paused ? "Play slideshow" : "Pause slideshow"}>{paused ? <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="m4 2 8 5-8 5Z" fill="currentColor" /></svg> : <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2v10M10 2v10" stroke="currentColor" strokeWidth="2" /></svg>}</button></div><span className={styles.heroLocation}>YOUR NEIGHBORHOOD. YOUR NEXT FAVORITE.</span><div className={styles.arrows}><button onClick={e => { setInstant(e.detail === 0); setActive(n => (n + slides.length - 1) % slides.length); }} aria-label="Previous slide"><Icon name="arrow" style={{ transform: "rotate(180deg)" }} width="17" /></button><button onClick={e => { setInstant(e.detail === 0); setActive(n => (n + 1) % slides.length); }} aria-label="Next slide"><Icon name="arrow" width="17" /></button></div></div>
     </div>
   </section>;
 }
@@ -137,5 +138,5 @@ export function BestSellers() {
 }
 
 export function Storefront() {
-  return <><WineDeal /><StoreHero /><div className={`container ${styles.previewNote}`}>A taste of what’s possible. Product selections and prices shown are samples; visit our live store for current availability.</div><ProductShelf index={0} /><SeasonalBanner placement="home-top" /><Collections /><BestSellers /><TastingsTeaser /><ProductShelf index={1} /><div className={styles.subscribeSpot}><Subscribe /></div><ProductShelf index={2} /><ProductShelf index={3} /></>;
+  return <><WineDeal /><StoreHero /><div className={`container ${styles.previewNote}`}>A taste of what’s possible. Product selections and prices shown are samples; visit our live store for current availability.</div><WineDiscovery /><ProductShelf index={0} /><SeasonalBanner placement="home-top" /><Collections /><BestSellers /><TastingsTeaser /><ProductShelf index={1} /><div className={styles.subscribeSpot}><Subscribe /></div><ProductShelf index={2} /><ProductShelf index={3} /></>;
 }

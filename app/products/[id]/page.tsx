@@ -41,6 +41,11 @@ export default async function ProductPage({ params }: Props) {
         {glance.length > 0 && <dl className={styles.glance}>{glance.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}
         {info?.staffPick && <figure className={styles.staffNote}><figcaption><Icon name="glass" width="15" height="15" />Why we love it</figcaption><blockquote>“{info.staffPick}”</blockquote><span>The Uncorked team · sample note</span></figure>}
         <ProductPurchase id={product.id} name={`${product.brand} ${product.name}`} price={priceOf(product)} />
+        {info && wineCategories.includes(product.category) && <section className={styles.profilePreview} aria-labelledby="wine-character-title">
+          <div className={styles.profileHeading}><h2 id="wine-character-title">In the glass</h2><a href="#tasting-notes">Tasting notes <Icon name="arrow" width="14" height="14" /></a></div>
+          <ul className={styles.profile}>{info.profile.map(([label, value]) => <li key={label}><span>{label}</span><span className={styles.meter} role="img" aria-label={`${label}: ${value} out of 5`}>{[1,2,3,4,5].map(n => <i key={n} data-on={n <= value} />)}</span></li>)}</ul>
+          <p className={styles.profileNote}>An illustrative guide to the style.</p>
+        </section>}
         <div className={styles.perks}>
           <p className={styles.perk}><Icon name="truck" width="17" height="17" /><span><b>Free local delivery</b> on orders over $40 in Hoboken and nearby.</span></p>
           {wineCategories.includes(product.category) && <Link href="/shop?category=wine" className={styles.perk}><Icon name="glass" width="17" height="17" /><span><b>Mix 4+ bottles of wine</b> and save 15–22%.</span><Icon name="arrow" width="15" /></Link>}
@@ -48,10 +53,10 @@ export default async function ProductPage({ params }: Props) {
         <div className={styles.visit}><Icon name="pin" width="18" /><span>Pick it up at 1450 Washington Street, Hoboken. <a href={product.externalHref}>Check live availability</a> or <a href="tel:+19083822133">call (908) 382-2133</a>.</span></div>
       </div>
     </div>
-    {info && <div className={styles.story} data-reveal="self">
+    {info && <div id="tasting-notes" className={styles.story} data-reveal="self">
       <div className={styles.notesBlock}><h2>Tasting notes</h2><dl className={styles.notes}><div><dt>Nose</dt><dd>{info.notes.nose}</dd></div><div><dt>Palate</dt><dd>{info.notes.palate}</dd></div><div><dt>Finish</dt><dd>{info.notes.finish}</dd></div></dl></div>
-      <div className={styles.storyGrid}>
-        <div><h3>Profile</h3><ul className={styles.profile}>{info.profile.map(([label, value]) => <li key={label}><span>{label}</span><span className={styles.meter} role="img" aria-label={`${label}: ${value} out of 5`}>{[1,2,3,4,5].map(n => <i key={n} data-on={n <= value} />)}</span></li>)}</ul></div>
+      <div className={styles.storyGrid} data-wine={wineCategories.includes(product.category)}>
+        {!wineCategories.includes(product.category) && <div><h3>Profile</h3><ul className={styles.profile}>{info.profile.map(([label, value]) => <li key={label}><span>{label}</span><span className={styles.meter} role="img" aria-label={`${label}: ${value} out of 5`}>{[1,2,3,4,5].map(n => <i key={n} data-on={n <= value} />)}</span></li>)}</ul></div>}
         <div><h3>Pairs well with</h3><ul className={styles.pairings}>{info.pairings.map(p => <li key={p}>{p}</li>)}</ul></div>
         <div><h3>The details</h3><dl className={styles.specs}>{info.specs.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl></div>
       </div>

@@ -49,6 +49,19 @@
 .meter { display: inline-flex; gap: 4px; }
 .meter i { width: 22px; height: 6px; border-radius: 3px; background: #e2d8c8; }
 .meter i[data-on=true] { background: var(--oxblood); }
+.profilePreview { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.profileHeading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.profileHeading h2 { font-family: var(--font-serif); font-size: 26px; line-height: 1.15; font-weight: 500; letter-spacing: -.02em; }
+.profileHeading a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; color: var(--oxblood); }
+.profilePreview .profile { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 28px; }
+.profilePreview .profile li { gap: 8px; min-height: 38px; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+.profilePreview .meter { gap: 4px; flex-shrink: 0; }
+.profilePreview .meter i { width: 7px; height: 7px; border-radius: 50%; background: transparent; border: 1px solid #9b897c; }
+.profilePreview .meter i[data-on=true] { border-color: var(--oxblood); background: var(--oxblood); }
+.profileNote { margin-top: 12px; font-size: 11px; color: var(--ink-3); }
+.story { scroll-margin-top: calc(var(--header-h) + 20px); }
+.storyGrid[data-wine=true] { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); }
+.storyGrid[data-wine=true] > div:last-child { grid-column: auto; }
 .pairings { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .pairings li { padding: 8px 13px; background: #fff; border: 1px solid #29251f14; border-radius: 999px; font-size: 13px; color: var(--ink); }
 .specs { margin: 0; display: grid; }
@@ -60,6 +73,8 @@
 @media(hover:hover) and (pointer:fine) { .perks a.perk:hover svg:last-child { transform: translateX(3px); } }
 @media(max-width:1000px) { .storyGrid { grid-template-columns: 1fr 1fr; }.storyGrid > div:last-child { grid-column: 1 / -1; } }
 @media(max-width:700px) {
+  .storyGrid[data-wine=true] { grid-template-columns: 1fr; }
+  .profilePreview .profile { gap: 0 20px; }
   .product { grid-template-columns: 1fr; gap: 24px; }.gallery { position: static; }.image { min-height: 360px; }.image img { height: 320px; }
   .copy h1 { font-size: 38px; }.glance { grid-template-columns: 1fr 1fr 1fr; }.glance > div + div { padding-left: 10px; }.glance dd { font-size: 12.5px; }
   .staffNote blockquote { font-size: 19px; }

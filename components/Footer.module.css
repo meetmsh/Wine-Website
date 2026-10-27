@@ -4,9 +4,11 @@
 @media(max-width:1000px) { .footerTop { grid-template-columns: 1fr 1fr; gap: 38px; }.newsletterInner { gap: 5%; }.fields { gap: 14px; } }
 @media(max-width:700px) { .newsletter { padding-block: 44px; }.newsletterInner { grid-template-columns: 1fr; gap: 30px; }.invitation h2 { font-size: 45px; }.invitation > svg { width: 26px; height: 26px; margin-bottom: 15px; }.invitation p { font-size: 14px; max-width: 33ch; margin-top: 20px; }.fields { grid-template-columns: 1fr; gap: 18px; }.fields label { margin-bottom: 8px; }.fields > :global(.btn) { margin-top: 2px; }.footer { padding-top: 40px; }.footerTop { grid-template-columns: 1fr 1fr; gap: 34px 25px; padding-bottom: 30px; }.brand { grid-column: 1 / -1; }.brand img { width: 190px; }.brand p { margin-top: 15px; }.footerTop nav:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }.footerTop nav:last-child h3 { grid-column: 1 / -1; margin-bottom: 8px; }.footerLinks { grid-template-columns: 1fr; gap: 12px; }.bottom { flex-wrap: wrap; gap: 12px 20px; line-height: 1.7; }.bottom > span:first-child { flex-basis: 100%; } }
 
-.brand > a.insta { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 8px 14px 8px 10px; border: 1px solid var(--line); font-size: 12px; color: var(--ink-2); transition: border-color 160ms ease, color 160ms ease; }
-.insta svg { color: var(--oxblood); }
-.insta b { display: block; font-weight: 600; color: var(--ink); }
+.brand > a.insta { display: grid; grid-template-columns: 20px minmax(0,1fr) 14px; align-items: center; gap: 12px; width: fit-content; max-width: 100%; min-height: 60px; margin-top: 22px; padding: 14px 0; border: 0; border-top: 1px solid var(--line); color: var(--ink-2); transition: border-color 160ms ease, color 160ms ease; }
+.insta svg { flex-shrink: 0; color: var(--oxblood); }
+.instaLabel { display: block; margin-bottom: 3px; font-size: 12px; }
+.insta b { display: block; font-size: 13px; font-weight: 500; line-height: 1.5; color: var(--oxblood); overflow-wrap: anywhere; }
+.insta:focus-visible { outline: 2px solid var(--oxblood); outline-offset: 5px; }
 @media(hover:hover) and (pointer:fine) { .brand > a.insta:hover { border-color: var(--oxblood); color: var(--oxblood); } }
 
 /* Readable footer */

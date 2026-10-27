@@ -1,0 +1,26 @@
+.heroBottle { position: absolute; top: 26px; right: 44px; width: 228px; display: grid; background: #f3eddf; color: var(--ink); box-shadow: 0 18px 40px -20px #1c090e80; }
+.bottleStage { height: 132px; display: grid; place-items: center; padding-top: 8px; }
+.bottleStage img { width: 144px; height: 124px; object-fit: contain; mix-blend-mode: multiply; transition: transform 240ms var(--ease); }
+.bottleCopy { padding: 12px 20px 16px; }
+.bottleCopy h2 { font-family: var(--font-serif); font-size: 22px; font-weight: 500; letter-spacing: -.02em; line-height: 1.12; }
+.bottleCopy h2 em { display: block; color: var(--oxblood); }
+.bottleCopy p { margin-top: 8px; font-size: 11px; line-height: 1.5; color: var(--ink-2); }
+.bottleFoot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-inline: 20px; padding-block: 12px; border-top: 1px solid #d8cdb9; font-size: 12px; }
+.bottleFoot > span:first-child { display: flex; gap: 6px; align-items: baseline; font-variant-numeric: tabular-nums; }
+.bottleFoot s { font-size: 10px; color: var(--ink-3); }
+.bottleFoot > span:last-child { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; color: var(--oxblood); }
+.heroBottle:focus-visible { outline-color: #f7ecda; outline-offset: 5px; }
+.discovery { display: grid; grid-template-columns: minmax(180px,1fr) minmax(0,3fr); align-items: center; gap: 40px; padding-block: 30px 10px; }
+.discovery h2 { max-width: 13ch; font-family: var(--font-serif); font-size: clamp(26px,2.5vw,34px); font-weight: 500; line-height: 1.12; letter-spacing: -.025em; }
+.discovery h2 em { display: block; color: var(--oxblood); }
+.discovery nav { min-width: 0; }
+.discovery ul { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); list-style: none; margin: 0; padding: 0; }
+.discovery li { min-width: 0; border-left: 1px solid var(--line); }
+.discovery li a { display: grid; gap: 7px; min-height: 88px; padding: 12px clamp(14px,1.7vw,24px); align-content: center; transition: background-color 180ms ease; }
+.wineName { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-family: var(--font-serif); font-size: clamp(23px,2.2vw,30px); line-height: 1.2; letter-spacing: -.02em; }
+.wineName svg { flex-shrink: 0; color: var(--oxblood); transition: transform 180ms var(--ease); }
+.wineNote { font-size: 12px; line-height: 1.5; color: var(--ink-2); }
+@media(hover:hover) and (pointer:fine) { .heroBottle:hover .bottleStage img { transform: translateY(-3px); }.discovery li a:hover { background: #f3eddf; }.discovery li a:hover svg { transform: translateX(3px); } }
+@media(max-width:1100px) { .heroBottle { display: none; }.discovery { grid-template-columns: 1fr; gap: 22px; }.discovery h2 { max-width: none; }.discovery li:first-child { border-left: 0; }.discovery li:first-child a { padding-left: 0; } }
+@media(max-width:700px) { .discovery { padding-top: 22px; gap: 20px; }.discovery h2 { font-size: 29px; }.discovery ul { grid-template-columns: repeat(2,minmax(0,1fr)); }.discovery li { border-left: 0; border-top: 1px solid var(--line); }.discovery li:nth-child(odd) { padding-right: 16px; }.discovery li:nth-child(even) { padding-left: 16px; }.discovery li a, .discovery li:first-child a { padding: 14px 0; min-height: 82px; }.wineName { font-size: clamp(22px,6.6vw,26px); gap: 6px; }.wineName svg { width: 16px; height: 16px; }.wineNote { font-size: 12px; } }
+@media(prefers-reduced-motion:reduce) { .bottleStage img, .wineName svg { transition: none; } }
