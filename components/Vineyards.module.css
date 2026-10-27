@@ -82,3 +82,29 @@
   .chapter { align-items: start; min-height: 0; background: #f5f1ea; }
   .photo { position: sticky; top: calc(var(--header-h) + 24px); height: min(620px, calc(100dvh - var(--header-h) - 48px)); min-height: 0; }
 }
+
+/* Explore links under each producer */
+.explore { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+.explore a { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; font-size: 14px; font-weight: 500; color: var(--oxblood); }
+.explore a svg { transition: transform 220ms var(--ease); }
+
+/* Keep exploring: three photographic doors */
+.more { padding-top: 96px; }
+.more h2 { font-family: var(--font-serif); font-size: clamp(36px,3.6vw,52px); font-weight: 500; line-height: 1.05; letter-spacing: -.03em; }
+.more h2 em { color: var(--oxblood); }
+.moreGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin-top: 30px; }
+.moreCard { position: relative; isolation: isolate; display: flex; align-items: flex-end; aspect-ratio: 4 / 5; overflow: hidden; color: #fbf3e6; background: #2a1d12; }
+.morePhoto { object-fit: cover; z-index: -2; transition: transform 1400ms var(--ease); }
+.moreCard::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,#1a0d0ae6 0%,#1a0d0a8c 38%,#1a0d0a00 68%); }
+.moreCopy { display: grid; gap: 6px; padding: 24px; }
+.moreCopy b { font-family: var(--font-serif); font-size: 28px; font-weight: 500; line-height: 1.1; letter-spacing: -.02em; }
+.moreCopy small { font-size: 14px; line-height: 1.5; color: #ecdccb; }
+.moreCta { display: inline-flex; align-items: center; gap: 10px; margin-top: 10px; padding-bottom: 3px; width: max-content; border-bottom: 1px solid #ecd5b180; font-size: 13.5px; font-weight: 500; color: #f6e6c9; }
+.moreCta svg { transition: transform 220ms var(--ease); }
+@media(hover:hover) and (pointer:fine) {
+  .explore a:hover svg, .moreCard:hover .moreCta svg { transform: translateX(4px); }
+  .moreCard:hover .morePhoto { transform: scale(1.04); }
+}
+@media(max-width:900px) { .moreGrid { grid-template-columns: 1fr; }.moreCard { aspect-ratio: 16 / 10; } }
+@media(max-width:700px) { .more { padding-top: 60px; }.moreCopy { padding: 20px; }.moreCopy b { font-size: 24px; } }
+@media(prefers-reduced-motion:reduce) { .morePhoto, .explore a svg, .moreCta svg { transition: none; } }

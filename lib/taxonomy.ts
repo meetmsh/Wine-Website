@@ -1,12 +1,12 @@
 // Mock shop taxonomy: per-product filter attributes and the mega-menu structure.
 // Attributes are illustrative until a real inventory feed supplies them.
-export type Attrs = { type: string; style?: string; varietal?: string; country?: string; state?: string; region?: string; subRegion?: string; vintage?: string; isNew?: boolean };
+export type Attrs = { type: string; vineyard?: string; style?: string; varietal?: string; country?: string; state?: string; region?: string; subRegion?: string; vintage?: string; isNew?: boolean };
 
 export const attrs: Record<string, Attrs> = {
-  "mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml": { type: "Wine", style: "Red", varietal: "Sangiovese", country: "Italy", region: "Tuscany", subRegion: "Chianti Classico", vintage: "2020" },
-  "justin-chardonnay-2023-750-ml": { type: "Wine", style: "White", varietal: "Chardonnay", country: "United States", state: "California", region: "Paso Robles", vintage: "2023", isNew: true },
-  "saint-aix-aix-rose-2025-750-ml": { type: "Wine", style: "Rosé & Blush", varietal: "Rosé", country: "France", region: "Provence", subRegion: "Coteaux d’Aix-en-Provence", vintage: "2025", isNew: true },
-  "cupcake-vineyards-prosecco-750-ml": { type: "Wine", style: "Champagne & Sparkling", varietal: "Glera", country: "Italy", region: "Veneto" },
+  "mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml": { type: "Wine", vineyard: "Mazzei", style: "Red", varietal: "Sangiovese", country: "Italy", region: "Tuscany", subRegion: "Chianti Classico", vintage: "2020" },
+  "justin-chardonnay-2023-750-ml": { type: "Wine", vineyard: "Justin", style: "White", varietal: "Chardonnay", country: "United States", state: "California", region: "Paso Robles", vintage: "2023", isNew: true },
+  "saint-aix-aix-rose-2025-750-ml": { type: "Wine", vineyard: "AIX", style: "Rosé & Blush", varietal: "Rosé", country: "France", region: "Provence", subRegion: "Coteaux d’Aix-en-Provence", vintage: "2025", isNew: true },
+  "cupcake-vineyards-prosecco-750-ml": { type: "Wine", vineyard: "Cupcake Vineyards", style: "Champagne & Sparkling", varietal: "Glera", country: "Italy", region: "Veneto" },
   "belching-beaver-peanut-butter-milk-stout": { type: "Beer", varietal: "Stout", country: "United States", state: "California" },
   "alvarado-street-mai-tai-pa-tropical-ipa": { type: "Beer", varietal: "IPA", country: "United States", state: "California" },
   "prairie-sweet-heat-sour": { type: "Beer", varietal: "Ale", country: "United States", state: "Oklahoma" },
@@ -24,6 +24,7 @@ export const attrs: Record<string, Attrs> = {
 export const FACETS = [
   { key: "type", label: "Type" },
   { key: "style", label: "Wine style" },
+  { key: "vineyard", label: "Vineyard" },
   { key: "varietal", label: "Varietal & style" },
   { key: "country", label: "Country" },
   { key: "state", label: "State" },

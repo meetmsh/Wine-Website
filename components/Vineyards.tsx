@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/catalog";
 import { vineyards } from "@/lib/vineyards";
+import { shopHref } from "@/lib/taxonomy";
 import { ProductCard } from "./Storefront";
 import { Icon } from "./Icon";
 import styles from "./Vineyards.module.css";
@@ -20,6 +21,12 @@ export function VineyardsBanner() {
     </Link>
   </section>;
 }
+
+const EXPLORE = [
+  { title: "Every wine on our shelves", text: "Filter by vineyard, region, grape or price.", cta: "Shop all wine", href: shopHref({ type: "Wine" }), image: "/images/stock/varietal-pinot-noir.jpg", position: "center 45%" },
+  { title: "Taste it in store", text: "Pour a few with us on Washington Street.", cta: "See upcoming tastings", href: "/tastings", image: "/images/stock/tasting-tuscan-reds.jpg", position: "center 40%" },
+  { title: "Mix any four wines", text: "Save 15% on four, up to 22% on twelve.", cta: "Build your case", href: shopHref({ type: "Wine" }), image: "/images/stock/signup-rose-pour.jpg", position: "center 40%" },
+];
 
 // Full page: one chapter per producer, photograph and story alternating sides, with the bottles to buy.
 export function VineyardsPage() {
@@ -40,9 +47,20 @@ export function VineyardsPage() {
           <p className={styles.story}>{v.story}</p>
           <dl className={styles.facts}>{v.facts.map(([k, val]) => <div key={k}><dt>{k}</dt><dd>{val}</dd></div>)}</dl>
           <div className={styles.bottles}>{bottles.map(p => <ProductCard key={p.id} product={p} />)}</div>
+          <div className={styles.explore}>
+            <Link href={shopHref({ type: "Wine", vineyard: v.producer })}>All {v.producer} wines<Icon name="arrow" width="15" height="15" /></Link>
+            <Link href={shopHref(v.more.params)}>{v.more.label}<Icon name="arrow" width="15" height="15" /></Link>
+          </div>
         </div>
       </article>;
     })}
+    <section className={`container ${styles.more}`} aria-labelledby="vineyards-more-title">
+      <h2 id="vineyards-more-title">Keep <em>exploring.</em></h2>
+      <div className={styles.moreGrid}>{EXPLORE.map(e => <Link key={e.title} href={e.href} className={styles.moreCard}>
+        <Image src={e.image} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" quality={90} className={styles.morePhoto} style={{ objectPosition: e.position }} />
+        <span className={styles.moreCopy}><b>{e.title}</b><small>{e.text}</small><span className={styles.moreCta}>{e.cta}<Icon name="arrow" width="15" height="15" /></span></span>
+      </Link>)}</div>
+    </section>
     <p className={`container ${styles.note}`}>Region photographs are representative of each area, not of the producers’ own estates.</p>
   </div>;
 }

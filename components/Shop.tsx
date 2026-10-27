@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import { vineyards } from "@/lib/vineyards";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { bestSellerRank } from "@/lib/content";
@@ -87,9 +89,10 @@ function passes(product: Product, f: Filters, skip?: Skip) {
 function titleFor(f: Filters) {
   if (f.collection) return collections[f.collection]?.title ?? "Collection";
   const one = (k: FacetKey) => (f.sets[k]?.length === 1 ? f.sets[k]![0] : undefined);
-  const style = one("style"), varietal = one("varietal"), region = one("region"), country = one("country"), type = one("type");
+  const style = one("style"), varietal = one("varietal"), region = one("region"), country = one("country"), type = one("type"), vineyard = one("vineyard");
   if (f.sale) { const what = (typeTitles[type ?? ""] ?? type ?? "").replace("All ", ""); return what ? `${what[0].toUpperCase()}${what.slice(1)} on sale` : "On sale"; }
   if (f.isNew) return "New arrivals";
+  if (vineyard) return vineyard;
   if (style) return ["Red", "White"].includes(style) ? `${style} wine` : style;
   if (varietal) return varietal;
   if (region) return region;
@@ -187,9 +190,15 @@ export function Shop() {
     </Group>
   </div>;
 
+  const activeVineyard = f.sets.vineyard?.length === 1 ? vineyards.find(v => v.producer === f.sets.vineyard![0]) : undefined;
   return <section className={`container ${styles.shop}`}>
     <nav className={styles.crumbs} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/shop">Shop</Link>{title !== "All the good stuff" && <><span aria-hidden="true">/</span><span>{title}</span></>}</nav>
-    <div className={styles.heading}><div><h1>{f.q ? <>Search: <em>“{f.q}”</em></> : title}</h1><p>{collection ? collection.text : "Something familiar. Something unexpected. Find your favorite."}</p></div></div>
+    <div className={styles.heading}><div><h1>{f.q ? <>Search: <em>“{f.q}”</em></> : title}</h1><p>{collection ? collection.text : activeVineyard ? <>{activeVineyard.lede} <Link href={`/vineyards#${activeVineyard.id}`} className={styles.vineyardStory}>Read their story</Link></> : "Something familiar. Something unexpected. Find your favorite."}</p></div></div>
+    {(f.sets.type?.includes("Wine") || f.sets.vineyard?.length) && <nav className={styles.vineyardStrip} aria-label="Shop wine by vineyard">
+      <span className={styles.vineyardLabel}>Shop by vineyard</span>
+      <ul>{vineyards.map(v => { const on = f.sets.vineyard?.includes(v.producer) ?? false; return <li key={v.id}><button type="button" aria-pressed={on} onClick={() => toggle("vineyard", v.producer)}><Image src={v.image} alt="" width={96} height={64} quality={85} sizes="48px" /><span><b>{v.producer}</b><small>{v.region}</small></span></button></li>; })}</ul>
+      <Link href="/vineyards" className={styles.vineyardMore}>Meet the vineyards<Icon name="arrow" width="15" height="15" /></Link>
+    </nav>}
     <div className={styles.layout}>
       <aside className={styles.sidebar} aria-label="Filters">{panel}</aside>
       <div className={styles.results}>
