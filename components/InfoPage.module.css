@@ -35,3 +35,6 @@
   .section { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
   .section h2 { font-size: 23px; }
 }
+.sectionPhoto { position: relative; aspect-ratio: 3 / 2; margin-bottom: 8px; overflow: hidden; background: #e7e1d6; }
+.sectionPhoto img { object-fit: cover; transition: transform 1400ms var(--ease); }
+@media(hover:hover) and (pointer:fine) { .section:hover .sectionPhoto img { transform: scale(1.03); } }
