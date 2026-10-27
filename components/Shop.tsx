@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { vineyards } from "@/lib/vineyards";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -196,7 +195,7 @@ export function Shop() {
     <div className={styles.heading}><div><h1>{f.q ? <>Search: <em>“{f.q}”</em></> : title}</h1><p>{collection ? collection.text : activeVineyard ? <>{activeVineyard.lede} <Link href={`/vineyards#${activeVineyard.id}`} className={styles.vineyardStory}>Read their story</Link></> : "Something familiar. Something unexpected. Find your favorite."}</p></div></div>
     {(f.sets.type?.includes("Wine") || f.sets.vineyard?.length) && <nav className={styles.vineyardStrip} aria-label="Shop wine by vineyard">
       <span className={styles.vineyardLabel}>Shop by vineyard</span>
-      <ul>{vineyards.map(v => { const on = f.sets.vineyard?.includes(v.producer) ?? false; return <li key={v.id}><button type="button" aria-pressed={on} onClick={() => toggle("vineyard", v.producer)}><Image src={v.image} alt="" width={96} height={64} quality={85} sizes="48px" /><span><b>{v.producer}</b><small>{v.region}</small></span></button></li>; })}</ul>
+      <ul>{vineyards.map(v => { const on = f.sets.vineyard?.includes(v.producer) ?? false; return <li key={v.id}><button type="button" aria-pressed={on} onClick={() => toggle("vineyard", v.producer)}><span><b>{v.producer}</b><small>{v.region}</small></span></button></li>; })}</ul>
       <Link href="/vineyards" className={styles.vineyardMore}>Meet the vineyards<Icon name="arrow" width="15" height="15" /></Link>
     </nav>}
     <div className={styles.layout}>
