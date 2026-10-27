@@ -33,7 +33,7 @@ export const FACETS = [
 ] as const;
 export type FacetKey = (typeof FACETS)[number]["key"];
 
-export const PRICE_BANDS: [number, number, string][] = [[0, 15, "Under $15"], [15, 30, "$15 to $30"], [30, 60, "$30 to $60"], [60, 100, "$60 to $100"]];
+export const PRICE_BANDS: [number, number, string][] = [[0, 15, "$0 to $15"], [15, 30, "$15 to $30"], [30, 60, "$30 to $60"], [60, 100, "$60 to $100"]];
 
 // Shelves that exist in the menu but not yet in the mock catalog.
 export const collections: Record<string, { title: string; text: string }> = {

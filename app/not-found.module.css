@@ -1,0 +1,5 @@
+.missing { padding-block: clamp(70px,12vw,150px); }
+.missing h1 { max-width: 16ch; font: 500 clamp(42px,6vw,76px)/1.06 var(--font-serif); letter-spacing: -.03em; text-wrap: balance; }
+.missing h1 em { color: var(--oxblood); }
+.missing p { max-width: 44ch; margin-block: 24px 32px; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+.missing > div { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 30px; }

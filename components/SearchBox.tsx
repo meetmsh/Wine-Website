@@ -8,7 +8,6 @@ import { Icon } from "./Icon";
 import styles from "./Header.module.css";
 
 const popular = ["Chianti", "Prosecco", "Rosé", "Bourbon", "IPA", "Tequila"];
-const hints = ["Chianti", "Provence rosé", "small-batch bourbon", "hazy IPAs", "Prosecco", "a Negroni"];
 
 export function SearchBox() {
   const router = useRouter();
@@ -16,15 +15,8 @@ export function SearchBox() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
   const input = useRef<HTMLInputElement>(null);
-  const [focused, setFocused] = useState(false);
-  const [hint, setHint] = useState(0);
   const q = fold(query.trim());
   const results = q ? products.filter(p => matches(`${p.brand} ${p.name} ${p.detail} ${p.category}`, q)).slice(0, 5) : [];
-  useEffect(() => {
-    if (query || focused || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = setInterval(() => setHint(i => (i + 1) % hints.length), 2800);
-    return () => clearInterval(timer);
-  }, [query, focused]);
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement;
@@ -46,12 +38,12 @@ export function SearchBox() {
   return <form action="/shop" role="search" className={styles.search} data-open={open} onSubmit={() => setOpen(false)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) setOpen(false); }}>
     <Icon name="search" width="18" height="18" className={styles.searchIcon} />
     <label className="sr-only" htmlFor="store-search">Search wines, beer, spirits and more</label>
-    <input ref={input} id="store-search" type="search" name="q" placeholder="" maxLength={120} autoComplete="off" value={query} onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => { setOpen(true); setFocused(true); }} onBlurCapture={() => setFocused(false)} onKeyDown={onKeyDown} role="combobox" aria-expanded={open} aria-controls="search-panel" aria-autocomplete="list" aria-activedescendant={active >= 0 ? `search-option-${active}` : undefined} />
-    {!query && <span className={styles.hint} aria-hidden="true">Search for <span key={hint} className={styles.hintWord}>{hints[hint]}</span></span>}
+    <input ref={input} id="store-search" type="search" name="q" placeholder="" maxLength={120} autoComplete="off" value={query} onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => { setOpen(true); }} onKeyDown={onKeyDown} role="combobox" aria-expanded={open} aria-controls={q && results.length ? "search-results" : "search-panel"} aria-autocomplete="list" aria-activedescendant={open && active >= 0 && results[active] ? `search-option-${active}` : undefined} />
+    {!query && <span className={styles.hint} aria-hidden="true">Search wine, beer, spirits…</span>}
     {query ? <button type="button" className={styles.clear} onClick={() => { setQuery(""); input.current?.focus(); }} aria-label="Clear search"><Icon name="close" width="15" height="15" /></button> : <><kbd className={styles.kbd} aria-hidden="true">/</kbd><kbd className={`${styles.kbd} ${styles.kbdEsc}`} aria-hidden="true">esc</kbd></>}
     <div id="search-panel" className={styles.searchPanel} hidden={!open} onMouseDown={e => e.preventDefault()}>
       {!q ? <div className={styles.popular}><p>Popular right now</p><div>{popular.map(term => <Link key={term} href={`/shop?q=${encodeURIComponent(term)}`} onClick={() => setOpen(false)}>{term}</Link>)}</div></div>
-        : results.length ? <><ul role="listbox" aria-label="Suggested products" className={styles.results}>{results.map((p, i) => <li key={p.id} id={`search-option-${i}`} role="option" aria-selected={active === i} onMouseEnter={() => setActive(i)} onClick={() => go(`/products/${p.id}`)}>
+        : results.length ? <><ul id="search-results" role="listbox" aria-label="Suggested products" className={styles.results}>{results.map((p, i) => <li key={p.id} id={`search-option-${i}`} role="option" aria-selected={active === i} onMouseEnter={() => setActive(i)} onClick={() => go(`/products/${p.id}`)}>
             <img src={p.image} alt="" width="40" height="52" /><span><small>{p.brand}</small>{p.name}</span><span className={styles.resultPrice}>{onSale(p) && <s>{money(p.price)}</s>}{money(priceOf(p))}</span>
           </li>)}</ul><button type="submit" className={styles.allResults}>See all results for “{query.trim()}” <Icon name="arrow" width="15" height="15" /></button></>
         : <p className={styles.noResults}>No bottles match “{query.trim()}” yet. Try a brand, a grape or a style.</p>}

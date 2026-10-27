@@ -18,24 +18,7 @@ export type Banner = {
   active: boolean;
 };
 
-export const banners: Banner[] = [
-  {
-    id: "halloween-2026",
-    placement: "home-top",
-    eyebrow: "Through Saturday, Oct 31",
-    headline: "Halloween,",
-    emphasis: "uncorked.",
-    body: "Blood-red wines, party-size picks and a few treats for the 31st. Stock up before the doorbell rings.",
-    cta: { label: "Shop Halloween picks", href: "/shop?type=Wine&style=Red" },
-    image: "/images/stock/halloween.jpg",
-    theme: "night",
-    picks: ["mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml", "negroni", "espresso-martini"],
-    starts: "2026-10-15T00:00:00-04:00",
-    ends: "2026-10-31T23:59:59-04:00",
-    priority: 10,
-    active: true,
-  },
-];
+export const banners: Banner[] = [];
 
 // The banner shown in a placement right now: active, inside its dates, highest priority first.
 export function bannerFor(placement: Banner["placement"], now = new Date()) {

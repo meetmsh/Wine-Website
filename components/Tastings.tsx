@@ -43,7 +43,7 @@ function LineupBottle({ id }: { id: string }) {
   const p = products.find(x => x.id === id);
   if (!p) return null;
   return <li className={styles.bottle}>
-    <Link href={`/products/${p.id}`} className={styles.bottlePhoto}><img src={p.image} alt="" width="56" height="76" loading="lazy" /></Link>
+    <Link href={`/products/${p.id}`} className={styles.bottlePhoto} aria-label={`View ${p.brand} ${p.name}`}><img src={p.image} alt="" width="56" height="76" loading="lazy" /></Link>
     <span className={styles.bottleInfo}><small>{p.brand}</small><Link href={`/products/${p.id}`}>{p.name}</Link><span className={styles.bottlePrice}>{onSale(p) && <em>Sale</em>}{money(priceOf(p))}{onSale(p) && <s>{money(p.price)}</s>}</span></span>
     <button onClick={() => { add(p.id); flash(); }} data-added={added} aria-label={`Add ${p.brand} ${p.name} to bag`}>{added ? <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m4 10 4 4 8-8" /></svg> : <Icon name="plus" width="15" height="15" />}<span>{added ? "Added" : "Add"}</span></button>
   </li>;
@@ -61,7 +61,7 @@ function TastingEvent({ event }: { event: Tasting }) {
       <h2>{event.title} <em>{event.emphasis}</em></h2>
       <p className={styles.eventText}>{event.description}</p>
       <div className={styles.lineup}><h3>On the table</h3><ul>{event.bottles.map(id => <LineupBottle key={id} id={id} />)}</ul>
-        <button className={styles.addAll} data-added={added} onClick={() => { event.bottles.forEach(add); flash(); }}>{added ? "Lineup added to your bag" : <>Add the whole lineup · {money(total)}</>}<Icon name={added ? "bag" : "plus"} width="16" height="16" /></button>
+        <button className={styles.addAll} data-added={added} onClick={() => { event.bottles.forEach(id => add(id)); flash(); }}>{added ? "Lineup added to your bag" : <>Add the whole lineup · {money(total)}</>}<Icon name={added ? "bag" : "plus"} width="16" height="16" /></button>
       </div>
       <div className={styles.eventActions}><a href={EVENTS_URL} className="btn">Reserve your spot <Icon name="arrow" width="18" /></a><span><Icon name="pin" width="15" height="15" />In store at 1450 Washington St</span></div>
     </div>

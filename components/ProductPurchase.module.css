@@ -13,7 +13,7 @@
 .add:active { transform: scale(.985); }
 .add:focus-visible { outline: 2px solid var(--oxblood); outline-offset: 3px; }
 @media(hover:hover) and (pointer:fine) { .stepper:hover { border-color: #29251f52; }.stepper button:not(:disabled):hover { background: #f5f0e8; color: var(--oxblood); }.add:hover { background: #561626; } }
-@media(max-width:380px) { .stepper button { width: 40px; }.add { padding: 0 16px; } }
+@media(max-width:480px) { .purchase { flex-wrap: wrap; }.purchase > .add { flex-basis: 100%; }.add { min-width: 0; padding: 0 18px; }.stepper button { width: 44px; } }
 @media(prefers-reduced-motion:reduce) { .add[data-added=true] .addLabel svg { animation: none; } }
 
 /* Sticky add bar (phones only) */

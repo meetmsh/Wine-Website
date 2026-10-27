@@ -66,7 +66,7 @@ function normalize(params: URLSearchParams) {
 }
 function read(params: URLSearchParams): Filters {
   const p = normalize(params);
-  const num = (k: string) => { const v = p.get(k); return v === null || v === "" || isNaN(Number(v)) ? undefined : Number(v); };
+  const num = (k: string) => { const v = p.get(k); return v === null || v === "" || !Number.isFinite(Number(v)) ? undefined : Math.max(0, Number(v)); };
   return {
     sets: Object.fromEntries(FACETS.map(({ key }) => [key, (p.get(key) || "").split(",").filter(Boolean)])),
     sale: p.get("sale") === "1", isNew: p.get("new") === "1", min: num("min"), max: num("max"),
@@ -119,9 +119,18 @@ export function Shop() {
   const pathname = usePathname();
   const f = useMemo(() => read(params), [params]);
   const [sheet, setSheet] = useState(false);
+  const sheetRef = useRef<HTMLDialogElement>(null);
+  const [priceError, setPriceError] = useState("");
   const [price, setPrice] = useState({ min: "", max: "" });
   useEffect(() => setPrice({ min: f.min?.toString() ?? "", max: f.max?.toString() ?? "" }), [f.min, f.max]);
-  useEffect(() => { document.documentElement.style.overflow = sheet ? "hidden" : ""; return () => { document.documentElement.style.overflow = ""; }; }, [sheet]);
+  useEffect(() => {
+    if (!sheet) return;
+    sheetRef.current?.showModal();
+    const previous = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    return () => { document.documentElement.style.overflow = previous; };
+  }, [sheet]);
+  function closeSheet() { sheetRef.current?.close(); setSheet(false); }
 
   function update(mutate: (p: URLSearchParams) => void) {
     const next = normalize(params);
@@ -167,13 +176,14 @@ export function Shop() {
     <Group title="Show"><Check checked={f.sale} label="On sale" count={saleCount} onChange={() => flag("sale")} /><Check checked={f.isNew} label="New arrivals" count={newCount} onChange={() => flag("new")} /></Group>
     {FACETS.map(({ key, label }) => { const options = facetOptions(key); return options.length ? <Group key={key} title={label} defaultOpen={!["subRegion", "state"].includes(key)}><Options options={options} selected={f.sets[key] ?? []} onToggle={v => toggle(key, v)} /></Group> : null; })}
     <Group title="Price range">
-      <form className={styles.range} onSubmit={e => { e.preventDefault(); const min = price.min === "" ? undefined : Math.max(0, Number(price.min)); const max = price.max === "" ? undefined : Math.max(0, Number(price.max)); setRange(min, max); }}>
+      <form className={styles.range} onSubmit={e => { e.preventDefault(); const min = price.min === "" ? undefined : Number(price.min); const max = price.max === "" ? undefined : Number(price.max); if ([min, max].some(v => v !== undefined && !Number.isFinite(v)) || (min !== undefined && max !== undefined && min > max)) { setPriceError("Enter valid prices, with the minimum below the maximum."); return; } setPriceError(""); setRange(min, max); }}>
         <label><span className="sr-only">Minimum price</span><i>$</i><input inputMode="decimal" placeholder="Min" value={price.min} onChange={e => setPrice(s => ({ ...s, min: e.target.value.replace(/[^\d.]/g, "") }))} /></label>
         <span aria-hidden="true">–</span>
         <label><span className="sr-only">Maximum price</span><i>$</i><input inputMode="decimal" placeholder="Max" value={price.max} onChange={e => setPrice(s => ({ ...s, max: e.target.value.replace(/[^\d.]/g, "") }))} /></label>
         <button type="submit">Go</button>
       </form>
-      {PRICE_BANDS.map(([lo, hi, label]) => { const n = pricePool.filter(p => priceOf(p) >= lo && priceOf(p) < hi).length; const on = f.min === lo && f.max === hi; return <Check key={label} checked={on} label={label} count={n} onChange={() => on ? setRange() : setRange(lo, hi)} />; })}
+      {priceError && <p className={styles.priceError} role="alert">{priceError}</p>}
+      {PRICE_BANDS.map(([lo, hi, label]) => { const n = pricePool.filter(p => priceOf(p) >= lo && priceOf(p) <= hi).length; const on = f.min === lo && f.max === hi; return <Check key={label} checked={on} label={label} count={n} onChange={() => on ? setRange() : setRange(lo, hi)} />; })}
     </Group>
   </div>;
 
@@ -194,9 +204,9 @@ export function Shop() {
           : <div className={styles.empty}><Icon name="search" width="34" height="34" /><h2>{collection ? "Coming soon to this preview." : "Nothing matches just yet."}</h2><p>{collection ? collection.text : "This mock catalog is small, so some filters come up empty. Try removing a filter or browse everything."}</p>{chips.length > 0 ? <button type="button" className="btn" onClick={clearAll}>Clear all filters <Icon name="arrow" width="17" /></button> : <Link href="/shop" className="btn">Browse all products <Icon name="arrow" width="17" /></Link>}</div>}
       </div>
     </div>
-    {sheet && <div className={styles.sheet} role="dialog" aria-modal="true" aria-label="Filters">
+    {sheet && <dialog ref={sheetRef} className={styles.sheet} aria-label="Filters" onCancel={closeSheet}>
       <div className={styles.sheetBody}>{panel}</div>
-      <div className={styles.sheetFoot}><button type="button" className={styles.sheetClose} onClick={() => setSheet(false)} aria-label="Close filters"><Icon name="close" width="18" height="18" /></button><button type="button" className="btn" onClick={() => setSheet(false)}>Show {results.length} {results.length === 1 ? "result" : "results"}<Icon name="arrow" width="17" /></button></div>
-    </div>}
+      <div className={styles.sheetFoot}><button type="button" className={styles.sheetClose} onClick={closeSheet} aria-label="Close filters"><Icon name="close" width="18" height="18" /></button><button type="button" className="btn" onClick={closeSheet}>Show {results.length} {results.length === 1 ? "result" : "results"}<Icon name="arrow" width="17" /></button></div>
+    </dialog>}
   </section>;
 }

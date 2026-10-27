@@ -14,6 +14,7 @@ export function ProductPurchase({ id, name, price }: { id: string; name: string;
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [stuck, setStuck] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   const row = useRef<HTMLDivElement>(null);
   useEffect(() => { if (!added) return; const t = setTimeout(() => setAdded(false), 2000); return () => clearTimeout(t); }, [added]);
   useEffect(() => {
@@ -21,10 +22,13 @@ export function ProductPurchase({ id, name, price }: { id: string; name: string;
     if (!el || !("IntersectionObserver" in window)) return;
     const io = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting && e.boundingClientRect.top < 0));
     io.observe(el);
-    return () => io.disconnect();
+    const footer = document.querySelector("#newsletter");
+    const footerObserver = new IntersectionObserver(([entry]) => setFooterVisible(entry.isIntersecting || entry.boundingClientRect.bottom < 0));
+    if (footer) footerObserver.observe(footer);
+    return () => { io.disconnect(); footerObserver.disconnect(); };
   }, []);
   const step = (d: number) => setQuantity(q => Math.min(MAX, Math.max(1, q + d)));
-  const addAll = () => { for (let i = 0; i < quantity; i++) add(id); setAdded(true); };
+  const addAll = () => { add(id, quantity); setAdded(true); };
   const label = (compact = false) => <span className={styles.addLabel}>{added ? <><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m4 10 4 4 8-8" /></svg>{compact ? "Added" : "Added to bag"}</> : "Add to bag"}</span>;
   return <>
     <div ref={row} className={styles.purchase}>
@@ -37,9 +41,9 @@ export function ProductPurchase({ id, name, price }: { id: string; name: string;
         {label()}<span className={styles.addPrice}>{money(price * quantity)}</span>
       </button>
     </div>
-    <div className={styles.sticky} data-visible={stuck} aria-hidden={!stuck}>
+    <div className={styles.sticky} data-visible={stuck && !footerVisible} aria-hidden={!stuck || footerVisible}>
       <span className={styles.stickyName}>{name}<b>{money(price * quantity)}{quantity > 1 && <small> · {quantity} items</small>}</b></span>
-      <button type="button" className={styles.add} data-added={added} tabIndex={stuck ? 0 : -1} onClick={addAll}>{label(true)}</button>
+      <button type="button" className={styles.add} data-added={added} tabIndex={stuck && !footerVisible ? 0 : -1} onClick={addAll}>{label(true)}</button>
     </div>
   </>;
 }

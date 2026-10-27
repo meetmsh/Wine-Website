@@ -9,8 +9,9 @@ const STORAGE_KEY = "uncorked:bag:v2";
 type CellarContextValue = {
   items: Record<string, number>;
   count: number;
-  add: (slug: string) => void;
+  add: (slug: string, quantity?: number) => void;
   remove: (slug: string) => void;
+  removeAll: (slug: string) => void;
 };
 
 const CellarContext = createContext<CellarContextValue | null>(null);
@@ -26,7 +27,7 @@ export function CellarProvider({ children }: { children: React.ReactNode }) {
       if (raw) {
         const parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
-          setItems(Object.fromEntries(Object.entries(parsed).filter(([slug, quantity]) => getStoreItem(slug) && Number.isInteger(quantity) && (quantity as number) > 0)) as Record<string, number>);
+          setItems(Object.fromEntries(Object.entries(parsed).filter(([slug, quantity]) => getStoreItem(slug) && Number.isInteger(quantity) && (quantity as number) > 0).map(([slug, quantity]) => [slug, Math.min(999, quantity as number)])) as Record<string, number>);
         }
       }
     } catch {
@@ -34,10 +35,10 @@ export function CellarProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const add = useCallback((slug: string) => {
-    if (!getStoreItem(slug)) return;
+  const add = useCallback((slug: string, quantity = 1) => {
+    if (!getStoreItem(slug) || !Number.isSafeInteger(quantity) || quantity < 1) return;
     setItems((prev) => {
-      const next = { ...prev, [slug]: (prev[slug] ?? 0) + 1 };
+      const next = { ...prev, [slug]: Math.min(999, (prev[slug] ?? 0) + quantity) };
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
       } catch {}
@@ -63,9 +64,18 @@ export function CellarProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const removeAll = useCallback((slug: string) => {
+    setItems(prev => {
+      const next = { ...prev };
+      delete next[slug];
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, []);
+
   const value = useMemo(
-    () => ({ items, add, remove, count: Object.values(items).reduce((a, b) => a + b, 0) }),
-    [items, add, remove],
+    () => ({ items, add, remove, removeAll, count: Object.values(items).reduce((a, b) => a + b, 0) }),
+    [items, add, remove, removeAll],
   );
 
   const wine = toast ? getStoreItem(toast.slug) : undefined;

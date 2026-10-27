@@ -5,6 +5,7 @@ import { AddToCellar } from "@/components/AddToCellar";
 import { Arrow } from "@/components/Arrow";
 import { Bottle } from "@/components/Bottle";
 import { Reveal } from "@/components/Reveal";
+import { money } from "@/lib/store";
 import { getWine, typeLabels, wines } from "@/lib/wines";
 import styles from "./page.module.css";
 
@@ -48,8 +49,8 @@ export default async function WinePage({ params }: Props) {
       <section className={styles.product}>
         <div className="container">
           <div className={styles.crumbs}>
-            <Link href="/#release" className="label">
-              ← The Release
+            <Link href="/shop?category=wine" className="label">
+              ← Back to wines
             </Link>
             <span className="label">
               No. {wine.no} / {String(wines.length).padStart(2, "0")}
@@ -76,7 +77,7 @@ export default async function WinePage({ params }: Props) {
                 <p className={styles.description}>{wine.description}</p>
                 <div className={styles.buy}>
                   <AddToCellar slug={wine.slug} price={wine.price} />
-                  <span className="label">Ships 24 October</span>
+                  <span className="label">Sample selection · check live availability</span>
                 </div>
               </Reveal>
 
@@ -99,10 +100,10 @@ export default async function WinePage({ params }: Props) {
         <div className="container">
           <div className={styles.relatedHead}>
             <h2 className={styles.relatedTitle}>
-              Also in <em>this release</em>
+              More <em>to explore</em>
             </h2>
-            <Link href="/#release" className="textlink">
-              All eight wines <Arrow />
+            <Link href="/shop?category=wine" className="textlink">
+              Shop all wine <Arrow />
             </Link>
           </div>
 
@@ -115,7 +116,7 @@ export default async function WinePage({ params }: Props) {
                   </div>
                   <div className={styles.cardMeta}>
                     <span className="label">No. {w.no}</span>
-                    <span className="label">£{w.price}</span>
+                    <span className="label">{money(w.price)}</span>
                   </div>
                   <span className={styles.cardName}>
                     {w.name} <em>{w.vintage}</em>
