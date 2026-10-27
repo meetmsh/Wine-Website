@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { products } from "@/lib/catalog";
 import { details } from "@/lib/details";
@@ -22,13 +23,14 @@ export default async function ProductPage({ params }: Props) {
   const sale = onSale(product);
   const glance = info?.specs.filter(([k]) => ["Style", "Grape", "Grapes", "Base", "Region", "Brewery", "Size", "Contents"].includes(k)).slice(0, 3) ?? [];
   const related = products.filter(p => p.category === product.category && p.id !== id).slice(0,4);
-  const recommendations = related.length ? related : products.filter(p => p.id !== id).slice(0,4);
+  // Always four: same category first, then fill from the rest of the catalog.
+  const recommendations = [...related, ...products.filter(p => p.id !== id && !related.includes(p))].slice(0, 4);
   return <section className={`container ${styles.page}`}>
     <div className={styles.breadcrumb}><Link href="/shop">Shop</Link><span>/</span><Link href={category.href}>{category.label}</Link><span>/</span><span>{product.brand}</span></div>
     <div className={styles.product}>
       <div className={styles.gallery}><div className={styles.image}>
         <div className={styles.badges}>{info?.staffPick && <span className={styles.pickTag}><Icon name="glass" width="13" height="13" />Staff pick</span>}{sale && <span className={styles.saleTag}>Sale</span>}</div>
-        <img src={product.image} alt={`${product.brand} ${product.name}`} width="520" height="560" />
+        <Image src={product.image} alt={`${product.brand} ${product.name}`} width={900} height={900} sizes="(max-width: 700px) 92vw, 50vw" quality={90} priority />
       </div></div>
       <div className={styles.copy}>
         <Link href={category.href} className={styles.category}>{category.label}</Link>
@@ -37,8 +39,8 @@ export default async function ProductPage({ params }: Props) {
         <p className={styles.price} data-sale={sale}>{sale && <span className="sr-only">Sale price </span>}{money(priceOf(product))}{sale && <s><span className="sr-only">Regular price </span>{money(product.price)}</s>}</p>
         {info && <p className={styles.description}>{info.description}</p>}
         {glance.length > 0 && <dl className={styles.glance}>{glance.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}
-        {info?.staffPick && <figure className={styles.staffNote}><figcaption><Icon name="glass" width="15" height="15" />Why we love it</figcaption><blockquote>“{info.staffPick}”</blockquote><span>The Uncorked team</span></figure>}
-        <ProductPurchase id={product.id} name={`${product.brand} ${product.name}`} />
+        {info?.staffPick && <figure className={styles.staffNote}><figcaption><Icon name="glass" width="15" height="15" />Why we love it</figcaption><blockquote>“{info.staffPick}”</blockquote><span>The Uncorked team · sample note</span></figure>}
+        <ProductPurchase id={product.id} name={`${product.brand} ${product.name}`} price={priceOf(product)} />
         <div className={styles.perks}>
           <p className={styles.perk}><Icon name="truck" width="17" height="17" /><span><b>Free local delivery</b> on orders over $40 in Hoboken and nearby.</span></p>
           {wineCategories.includes(product.category) && <Link href="/shop?category=wine" className={styles.perk}><Icon name="glass" width="17" height="17" /><span><b>Mix 4+ bottles of wine</b> and save 15–22%.</span><Icon name="arrow" width="15" /></Link>}
@@ -55,6 +57,6 @@ export default async function ProductPage({ params }: Props) {
       </div>
       <p className={styles.storyNote}>Sample tasting notes and details, written as our impressions of the style. Product, pricing and availability are illustrative; always check the label.</p>
     </div>}
-    <div className={styles.related}><h2>A little more to explore</h2><div className={shelf.products} data-reveal>{recommendations.map(p => <ProductCard key={p.id} product={p} />)}</div></div>
+    <div className={styles.related}><h2>A little more to explore</h2><div className={`${shelf.products} ${styles.relatedGrid}`} data-reveal>{recommendations.map(p => <ProductCard key={p.id} product={p} />)}</div></div>
   </section>;
 }

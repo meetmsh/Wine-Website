@@ -39,7 +39,7 @@ export function SeasonalBanner({ placement }: { placement: Banner["placement"] }
       <Link href={banner.cta.href} className={styles.cta}>{banner.cta.label}<span aria-hidden="true"><Icon name="arrow" width="16" /></span></Link>
     </div>
     <div className={styles.visual}>
-      <Image src={banner.image} alt="" fill sizes="(max-width: 900px) 100vw, 55vw" quality={82} className={styles.photo} />
+      <Image src={banner.image} alt="" fill sizes="(max-width: 900px) 100vw, 55vw" quality={85} loading="eager" className={styles.photo} />
       {picks.length > 0 && <div className={styles.picks}><p>Picks for the 31st</p><ul>{picks.map(p => <Pick key={p.id} product={p} />)}</ul></div>}
     </div>
   </section>;

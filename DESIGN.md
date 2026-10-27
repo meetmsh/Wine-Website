@@ -198,6 +198,10 @@ The owner chose to keep the warm paper world and borrow Linear's craft rather th
 
 Product pages pair a sticky photo (badges top-left: brass "Staff pick", oxblood "Sale") with the buying column: serif brand and italic name, price, a short description, a three-cell "at a glance" spec row, an optional "Why we love it" staff quote on tinted paper with a brass hairline, quantity and Add to bag, and the delivery and wine-offer perks. Below sits a tinted story panel: serif tasting notes (nose, palate, finish), a five-step profile meter, pairing pills and a ruled details list, closed by a small sample-content note. Content lives in `lib/details.ts`; a product with a `staffPick` line also shows the brass badge on its cards site-wide.
 
+### Mobile and Buying Controls
+
+Product pages use a quantity stepper (54px, square, hairline border) beside an Add to bag button that carries the running total; on phones a frosted sticky bar with name, price and Add to bag slides up once those controls scroll away. Product cards stack price above a full-width 44px add button on phones. The phone menu is one column of 54px rows with Wine, Beer and Spirits as accordions of their groups. The bag shows brand above name, unit price when quantity is above 1, a Remove link, and a sticky checkout footer (totals, loyalty, CTA). The offer band compresses to a one-line headline and tier tiles on phones so the hero shows on the first screen. Controls are square everywhere; pills are reserved for the search field, the bag pill and removable filter chips. Scroll reveals are a short rise without blur.
+
 ### Wine Tastings
 
 The home page carries a tastings section after Collections: a serif headline, one large photographic card for the next tasting (paper date tile top-left, dark bottom gradient, cream serif title) and a ruled list of the following dates with tinted date tiles. `/tastings` lists every tasting as a paper-tinted row with photo, date tile, long date and time, description, an "On the table" lineup with per-bottle add buttons and an "Add the whole lineup" action, and a primary "Reserve your spot" link to the live events page.

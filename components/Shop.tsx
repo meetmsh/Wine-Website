@@ -88,7 +88,7 @@ function titleFor(f: Filters) {
   if (f.collection) return collections[f.collection]?.title ?? "Collection";
   const one = (k: FacetKey) => (f.sets[k]?.length === 1 ? f.sets[k]![0] : undefined);
   const style = one("style"), varietal = one("varietal"), region = one("region"), country = one("country"), type = one("type");
-  if (f.sale) return type ? `${(typeTitles[type] ?? type).replace("All ", "")} on sale` : "On sale";
+  if (f.sale) { const what = (typeTitles[type ?? ""] ?? type ?? "").replace("All ", ""); return what ? `${what[0].toUpperCase()}${what.slice(1)} on sale` : "On sale"; }
   if (f.isNew) return "New arrivals";
   if (style) return ["Red", "White"].includes(style) ? `${style} wine` : style;
   if (varietal) return varietal;

@@ -17,7 +17,7 @@ button,a { touch-action: manipulation; }button,[role=button] { user-select: none
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .reveal { opacity: 1; transform: none; }
 @media(hover:hover) and (pointer:fine) { .btn:hover { background: var(--oxblood-deep); } }
-@media(max-width:700px) { :root { --header-h: 112px; } input,select,textarea { font-size: 16px; } }
+@media(max-width:700px) { :root { --header-h: 72px; } input,select,textarea { font-size: 16px; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }button:active,.btn:active { transform: none; } }
 
 /* Motion: scroll reveal (hidden only after MotionRoot confirms motion is allowed) */
@@ -38,3 +38,7 @@ html.motion [data-reveal=self] { transition: opacity 700ms var(--ease), transfor
 @media(hover:hover) and (pointer:fine) { .btn:hover { box-shadow: inset 0 1px 0 #ffffff2e, 0 2px 4px #35141f33, 0 14px 26px -14px #35141f99; }.btn:hover svg { transform: translateX(3px); } }
 ::selection { background: #641b2e; color: #fff9ee; }
 @media(prefers-reduced-motion:reduce) { html.motion [data-reveal] > *, html.motion [data-reveal] { filter: none !important; } }
+/* Calmer scroll reveal: a short rise only, no blur */
+html.motion [data-reveal]:not([data-reveal=self]):not(.is-in) > *, html.motion [data-reveal=self]:not(.is-in) { filter: none; }
+html.motion [data-reveal]:not([data-reveal=self]) > * { transition: opacity 420ms var(--ease), transform 480ms var(--ease), background-color 200ms ease; }
+html.motion [data-reveal=self] { transition: opacity 480ms var(--ease), transform 560ms var(--ease); }

@@ -1,9 +1,9 @@
-﻿.form { min-width: 0; }
+.form { min-width: 0; }
 .fields { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 26px 32px; }
 .field { position: relative; min-width: 0; }
 .field label { display: block; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #cdb3a6; transition: color 200ms ease; }
-.field input { display: block; width: 100%; min-width: 0; height: 46px; padding: 6px 0 8px; border: 0; border-bottom: 1px solid #f3e3c94d; border-radius: 0; background: transparent; color: #fbf1e3; font-size: 17px; caret-color: #e2c48d; transition: border-color 200ms ease; }
-.field input::placeholder { color: #f3e3c966; }
+.field input { display: block; width: 100%; min-width: 0; height: 46px; padding: 6px 0 8px; border: 0; border-bottom: 1px solid #f3e3c999; border-radius: 0; background: transparent; color: #fbf1e3; font-size: 17px; caret-color: #e2c48d; transition: border-color 200ms ease; }
+.field input::placeholder { color: #f3e3c9b3; }
 .field input:focus, .field input:focus-visible { outline: none; }
 .field::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #e2c48d; transform: scaleX(0); transform-origin: left; transition: transform 420ms var(--ease); }
 .field:focus-within::after { transform: scaleX(1); }
@@ -14,7 +14,7 @@
 .arrow { display: grid; place-items: center; width: 50px; height: 50px; margin-left: 28px; border-left: 1px solid #641b2e26; color: #641b2e; }
 .arrow svg { transition: transform 300ms var(--ease); }
 .submit:active:not(:disabled) { transform: scale(.98); }
-.submit:focus-visible { outline: 1px solid #e2c48d; outline-offset: 4px; }
+.submit:focus-visible { outline: 2px solid #e2c48d; outline-offset: 4px; }
 .submit:disabled { opacity: .75; cursor: default; }
 .privacy { margin-top: 22px; max-width: 58ch; font-size: 11.5px; line-height: 1.7; color: #b89a8e; }
 .privacy a { color: #e9d6c9; text-decoration: underline; text-underline-offset: 3px; }

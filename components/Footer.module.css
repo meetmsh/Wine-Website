@@ -8,3 +8,10 @@
 .insta svg { color: var(--oxblood); }
 .insta b { display: block; font-weight: 600; color: var(--ink); }
 @media(hover:hover) and (pointer:fine) { .brand > a.insta:hover { border-color: var(--oxblood); color: var(--oxblood); } }
+
+/* Readable footer */
+.footerTop nav > a, .visit > a, .footerLinks a { font-size: 14px; line-height: 2; }
+.visit p { font-size: 13.5px; }
+.bottom { font-size: 12px; }
+@media(max-width:700px) { .footerLinks a, .footerTop nav > a { display: flex; align-items: center; min-height: 40px; } }
+@media(max-width:700px) { .footerLinks a, .footerTop nav > a { line-height: 1.4; min-height: 36px; }.footerLinks { gap: 0 20px; } }

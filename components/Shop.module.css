@@ -88,3 +88,7 @@
 @media(hover:hover) and (pointer:fine) { .sortButton:hover { border-color: #29251f59; } }
 @media(max-width:700px) { .sortLabel { display: none; } }
 @media(prefers-reduced-motion:reduce) { .sortList { animation: none; } }
+/* 44px controls, square to match the rest of the system */
+.filterButton { min-height: 44px; border-radius: 0; }
+.sortButton { height: 44px; }
+.range input, .range button { border-radius: 0; }

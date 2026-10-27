@@ -19,8 +19,8 @@ export const money = (amount: number) => new Intl.NumberFormat("en-US", { style:
 export const priceOf = (p: Pick<Product, "price" | "salePrice">) => p.salePrice ?? p.price;
 export const onSale = (p: Pick<Product, "price" | "salePrice">) => p.salePrice !== undefined && p.salePrice < p.price;
 export const storeItems = [
-  ...products.map(p => ({ id: p.id, name: p.name, price: priceOf(p), was: onSale(p) ? p.price : undefined, wine: wineCategories.includes(p.category), image: p.image, detail: p.detail, href: `/products/${p.id}` })),
-  ...wines.map(w => ({ id: w.slug, name: w.name, price: w.price, was: undefined, wine: true, image: "", detail: `${w.producer} · ${w.vintage}`, href: `/wines/${w.slug}` })),
+  ...products.map(p => ({ id: p.id, brand: p.brand, name: p.name, price: priceOf(p), was: onSale(p) ? p.price : undefined, wine: wineCategories.includes(p.category), image: p.image, detail: p.detail, href: `/products/${p.id}` })),
+  ...wines.map(w => ({ id: w.slug, brand: w.producer, name: w.name, price: w.price, was: undefined, wine: true, image: "", detail: `${w.producer} · ${w.vintage}`, href: `/wines/${w.slug}` })),
 ];
 export const getStoreItem = (id: string) => storeItems.find(p => p.id === id);
 

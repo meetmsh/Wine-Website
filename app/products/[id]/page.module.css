@@ -65,3 +65,6 @@
   .staffNote blockquote { font-size: 19px; }
   .story { margin-top: 48px; padding: 26px 20px; }.notes { grid-template-columns: 1fr; gap: 18px; padding-bottom: 24px; }.notes dd { font-size: 19px; }.storyGrid { grid-template-columns: 1fr; gap: 28px; }
 }
+.pairings li { border-radius: 0; background: transparent; border-color: var(--line-strong); }
+
+@media(max-width:700px) { .relatedGrid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 14px) / 1.85); gap: 14px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: none; }.relatedGrid > * { scroll-snap-align: start; }.page { padding-bottom: 90px; } }

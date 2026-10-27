@@ -23,7 +23,8 @@ export function MegaNav() {
     if (!t || !p || !w) return;
     const wr = w.getBoundingClientRect(), tr = t.getBoundingClientRect();
     const center = tr.left + tr.width / 2 - wr.left;
-    const x = Math.min(Math.max(center - p.offsetWidth / 2, 12), wr.width - p.offsetWidth - 12);
+    const edge = parseFloat(getComputedStyle(w).paddingLeft) || 12; // keep the panel inside the page gutters
+    const x = Math.min(Math.max(center - p.offsetWidth / 2, edge), wr.width - p.offsetWidth - edge);
     setGeo({ x, w: p.offsetWidth, h: p.offsetHeight, caret: center - x });
   }, [active]);
   useEffect(() => {
