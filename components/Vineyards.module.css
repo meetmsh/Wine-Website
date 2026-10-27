@@ -1,7 +1,7 @@
 /* Homepage banner: slim and photographic, one quiet line of type over the landscape */
 .bannerWrap { padding-block: 56px 72px; }
 .banner { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0,1fr) auto; grid-template-areas: "copy cta" "places cta"; align-items: end; gap: 10px 32px; min-height: 260px; padding: 34px clamp(26px,3.6vw,48px); overflow: hidden; color: #fbf3e6; background: #2a1d12; }
-.bannerPhoto { object-fit: cover; object-position: center 62%; z-index: -2; transition: transform 1600ms var(--ease); }
+.bannerPhoto { object-fit: cover; object-position: center 30%; z-index: -2; transition: transform 1600ms var(--ease); }
 .banner::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,#1e1209d9 0%,#1e120999 40%,#1e120926 75%), linear-gradient(0deg,#1e1209b3 0%,#1e120900 55%); }
 .bannerCopy { grid-area: copy; display: grid; gap: 8px; max-width: 34rem; }
 .bannerTitle { font-family: var(--font-serif); font-size: clamp(34px,3.4vw,48px); font-weight: 500; line-height: 1.02; letter-spacing: -.03em; }

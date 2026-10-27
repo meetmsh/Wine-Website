@@ -11,7 +11,7 @@ import styles from "./Vineyards.module.css";
 export function VineyardsBanner() {
   return <section className={`container ${styles.bannerWrap}`} aria-labelledby="vineyards-banner-title">
     <Link href="/vineyards" className={styles.banner}>
-      <Image src="/images/stock/vineyard-tuscany.jpg" alt="" fill sizes="(max-width: 700px) 100vw, 1280px" quality={90} className={styles.bannerPhoto} />
+      <Image src="/images/vineyard.jpg" alt="" fill sizes="(max-width: 700px) 100vw, 1280px" quality={90} className={styles.bannerPhoto} />
       <span className={styles.bannerCopy}>
         <span id="vineyards-banner-title" className={styles.bannerTitle}>Wine by <em>vineyard.</em></span>
         <span className={styles.bannerText}>Meet the places behind the bottles, from Tuscany to Provence.</span>
