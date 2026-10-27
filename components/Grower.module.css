@@ -1,0 +1,126 @@
+.section {
+  --soft: rgba(242, 236, 226, 0.62);
+  --rule: rgba(242, 236, 226, 0.18);
+
+  background: var(--oxblood-deep);
+  color: var(--paper);
+  padding-block: clamp(64px, 7vw, 104px);
+}
+
+.section ::selection {
+  background: var(--paper);
+  color: var(--oxblood-deep);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(40px, 7vw, 120px);
+  align-items: center;
+}
+
+.mapWrap {
+  position: relative;
+  border: 1px solid var(--rule);
+  background:
+    linear-gradient(var(--rule) 1px, transparent 1px) 0 0 / 25% 25%,
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px) 0 0 / 25% 25%;
+  background-blend-mode: normal;
+  border-radius: 50% 50% 0 0;
+  overflow: hidden;
+  color: #c7ad87;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.coords {
+  position: absolute;
+  inset: auto 14px 12px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--soft);
+  pointer-events: none;
+}
+
+.quote {
+  margin: 0 0 40px;
+}
+
+.quote p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.quote footer {
+  margin-top: 20px;
+  color: var(--brass);
+}
+
+.body {
+  max-width: 46ch;
+  color: var(--soft);
+  font-size: 15.5px;
+}
+
+.link {
+  margin-top: 28px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.stat {
+  padding: 18px 20px 0 0;
+}
+
+.stat + .stat {
+  padding-left: 20px;
+  border-left: 1px solid var(--rule);
+}
+
+.stat dt {
+  color: var(--soft);
+}
+
+.stat dd {
+  margin: 14px 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 4.8vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat dd span {
+  margin-left: 4px;
+  font-size: 0.4em;
+  font-style: italic;
+  color: var(--brass);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stat:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .stat:nth-child(n + 3) {
+    margin-top: 28px;
+  }
+}

@@ -1,0 +1,178 @@
+﻿[
+    {
+        "id":  "mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml",
+        "category":  "red",
+        "brand":  "Mazzei",
+        "name":  "Ser Lapo Chianti Classico",
+        "detail":  "Tuscany, Italy · 750 ml",
+        "price":  24.99,
+        "image":  "/images/products/mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0062/7775/9094/products/MazzeiSerLapoChiantiClassicoRiserva2018.jpg?v=1702766387",
+        "sourcePage":  "https://www.wineonsale.com/products/mazzei-ser-lapo-chianti-classico-riserva-2020-750-ml"
+    },
+    {
+        "id":  "justin-chardonnay-2023-750-ml",
+        "category":  "white",
+        "brand":  "Justin",
+        "name":  "Chardonnay",
+        "detail":  "California · 750 ml",
+        "price":  19.99,
+        "image":  "/images/products/justin-chardonnay-2023-750-ml.png",
+        "source":  "https://cdn.shopify.com/s/files/1/0062/7775/9094/files/Justin_Chardonnay.png?v=1753822549",
+        "sourcePage":  "https://www.wineonsale.com/products/justin-chardonnay-2023-750-ml"
+    },
+    {
+        "id":  "saint-aix-aix-rose-2025-750-ml",
+        "category":  "rose",
+        "brand":  "AIX",
+        "name":  "Provence Rose",
+        "detail":  "Provence, France · 750 ml",
+        "price":  22.99,
+        "image":  "/images/products/saint-aix-aix-rose-2025-750-ml.png",
+        "source":  "https://cdn.shopify.com/s/files/1/0062/7775/9094/products/Saint_Aix_Provence_Rose_2018_Bottle.png?v=1602073958",
+        "sourcePage":  "https://www.wineonsale.com/products/saint-aix-aix-rose-2025-750-ml"
+    },
+    {
+        "id":  "cupcake-vineyards-prosecco-750-ml",
+        "category":  "sparkling",
+        "brand":  "Cupcake Vineyards",
+        "name":  "Prosecco",
+        "detail":  "Veneto, Italy · 750 ml",
+        "price":  14.99,
+        "image":  "/images/products/cupcake-vineyards-prosecco-750-ml.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0062/7775/9094/products/CupcakeVineyardsProsecco.jpg?v=1616171274",
+        "sourcePage":  "https://www.wineonsale.com/products/cupcake-vineyards-prosecco-750-ml"
+    },
+    {
+        "id":  "belching-beaver-peanut-butter-milk-stout",
+        "category":  "beer",
+        "brand":  "Belching Beaver",
+        "name":  "Peanut Butter Milk Stout",
+        "detail":  "Milk stout · 12 oz can",
+        "price":  3.99,
+        "image":  "/images/products/belching-beaver-peanut-butter-milk-stout.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/products/Belching-Beaver-Peanut-Butter-Milk-Stout-12OZ-CAN.jpg?v=1642715128",
+        "sourcePage":  "https://craftshack.com/products/belching-beaver-peanut-butter-milk-stout"
+    },
+    {
+        "id":  "alvarado-street-mai-tai-pa-tropical-ipa",
+        "category":  "beer",
+        "brand":  "Alvarado Street",
+        "name":  "Mai Tai Tropical IPA",
+        "detail":  "Tropical IPA · 16 oz can",
+        "price":  5.99,
+        "image":  "/images/products/alvarado-street-mai-tai-pa-tropical-ipa.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/products/Alvarado-Street-Mai-Tai-PA-Tropical-IPA-16OZ-CAN.jpg?v=1715749005",
+        "sourcePage":  "https://craftshack.com/products/alvarado-street-mai-tai-pa-tropical-ipa"
+    },
+    {
+        "id":  "prairie-sweet-heat-sour",
+        "category":  "beer",
+        "brand":  "Prairie Artisan Ales",
+        "name":  "Sweet Heat",
+        "detail":  "Fruited sour · 12 oz can",
+        "price":  5.49,
+        "image":  "/images/products/prairie-sweet-heat-sour.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/files/Prairie-Sweet-Heat-Sour-12OZ-CAN.jpg?v=1740619717",
+        "sourcePage":  "https://craftshack.com/products/prairie-sweet-heat-sour"
+    },
+    {
+        "id":  "other-half-nectar-diamonds-double-dry-hopped-ipa",
+        "category":  "beer",
+        "brand":  "Other Half",
+        "name":  "Nectar Diamonds",
+        "detail":  "Double dry hopped IPA · 16 oz can",
+        "price":  6.99,
+        "image":  "/images/products/other-half-nectar-diamonds-double-dry-hopped-ipa.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/files/Other-Half-Nectar-Diamonds-Double-Dry-Hopped-IPA-16OZ-CAN.jpg?v=1737345519",
+        "sourcePage":  "https://craftshack.com/products/other-half-nectar-diamonds-double-dry-hopped-ipa"
+    },
+    {
+        "id":  "fortaleza-blanco-tequila",
+        "category":  "spirits",
+        "brand":  "Fortaleza",
+        "name":  "Blanco Tequila",
+        "detail":  "Jalisco, Mexico · 750 ml",
+        "price":  69.99,
+        "image":  "/images/products/fortaleza-blanco-tequila.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/products/Fortaleza-Blanco-Tequila-750ML-BTL.jpg?v=1587289431",
+        "sourcePage":  "https://craftshack.com/products/fortaleza-blanco-tequila"
+    },
+    {
+        "id":  "black-maple-hill-oregon-bourbon-whiskey",
+        "category":  "spirits",
+        "brand":  "Black Maple Hill",
+        "name":  "Oregon Bourbon",
+        "detail":  "Oregon · 750 ml",
+        "price":  59.99,
+        "image":  "/images/products/black-maple-hill-oregon-bourbon-whiskey.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/products/Black-Maple-Hill-Bourbon-Whiskey-750ML-BTL.jpg?v=1587372531",
+        "sourcePage":  "https://craftshack.com/products/black-maple-hill-oregon-bourbon-whiskey"
+    },
+    {
+        "id":  "accompani-crimson-snap-amaro",
+        "category":  "spirits",
+        "brand":  "Accompani",
+        "name":  "Crimson Snap Amaro",
+        "detail":  "Botanical amaro · 750 ml",
+        "price":  32.99,
+        "image":  "/images/products/accompani-crimson-snap-amaro.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/products/Accompani-Crimson-Snap-Amaro-750ML-BTL.jpg?v=1678095093",
+        "sourcePage":  "https://craftshack.com/products/accompani-crimson-snap-amaro"
+    },
+    {
+        "id":  "humboldt-distillery-vodka",
+        "category":  "spirits",
+        "brand":  "Humboldt Distillery",
+        "name":  "Organic Vodka",
+        "detail":  "California · 750 ml",
+        "price":  24.99,
+        "image":  "/images/products/humboldt-distillery-vodka.jpg",
+        "source":  "https://cdn.shopify.com/s/files/1/0227/0581/products/Humboldt-Organic-Vodka-750ML-BTL.jpg?v=1659437915",
+        "sourcePage":  "https://craftshack.com/products/humboldt-distillery-vodka"
+    },
+    {
+        "id":  "old-fashioned",
+        "category":  "rtd",
+        "brand":  "Tip Top",
+        "name":  "Old Fashioned",
+        "detail":  "Ready to pour · 8 × 100 ml",
+        "price":  39.99,
+        "image":  "/images/products/old-fashioned.png",
+        "source":  "https://cdn.shopify.com/s/files/1/0627/8486/4492/files/TTC_Ecommerce_OF_4Pack_OF-2x4pk_WEB_c3de5292-b952-4391-a0a1-dfe5afa18cb1.png?v=1769617775",
+        "sourcePage":  "https://tiptopcocktails.com/products/old-fashioned"
+    },
+    {
+        "id":  "margarita",
+        "category":  "rtd",
+        "brand":  "Tip Top",
+        "name":  "Margarita",
+        "detail":  "Ready to pour · 8 × 100 ml",
+        "price":  39.99,
+        "image":  "/images/products/margarita.png",
+        "source":  "https://cdn.shopify.com/s/files/1/0627/8486/4492/files/TTC_Ecommerce_MG_4Pack_MG-2x4pk_WEB_694e2b1f-3afb-44b6-97db-d7f9eca808c7.png?v=1769617604",
+        "sourcePage":  "https://tiptopcocktails.com/products/margarita"
+    },
+    {
+        "id":  "negroni",
+        "category":  "rtd",
+        "brand":  "Tip Top",
+        "name":  "Negroni",
+        "detail":  "Ready to pour · 8 × 100 ml",
+        "price":  39.99,
+        "image":  "/images/products/negroni.png",
+        "source":  "https://cdn.shopify.com/s/files/1/0627/8486/4492/files/TTC_Ecommerce_Neg56_4Pack_NG-2x4pk_WEB.png?v=1765831391",
+        "sourcePage":  "https://tiptopcocktails.com/products/negroni"
+    },
+    {
+        "id":  "espresso-martini",
+        "category":  "rtd",
+        "brand":  "Tip Top",
+        "name":  "Espresso Martini",
+        "detail":  "Ready to pour · 8 × 100 ml",
+        "price":  39.99,
+        "image":  "/images/products/espresso-martini.png",
+        "source":  "https://cdn.shopify.com/s/files/1/0627/8486/4492/files/TTC_Ecommerce_EM_4Pack_EM-2x4pk_WEB.png?v=1765828926",
+        "sourcePage":  "https://tiptopcocktails.com/products/espresso-martini"
+    }
+]

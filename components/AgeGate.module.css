@@ -1,0 +1,24 @@
+.gate { width: min(440px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 40px 36px 30px; border: 0; background: var(--paper); color: var(--ink); text-align: center; overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 40px 80px -30px #1a080e80, 0 12px 28px -14px #1a080e40; opacity: 1; transform: none; transition: opacity 240ms var(--ease), transform 300ms var(--ease), overlay 240ms allow-discrete, display 240ms allow-discrete; }
+.gate::backdrop { background: #2a0f1880; backdrop-filter: blur(10px) saturate(.9); -webkit-backdrop-filter: blur(10px) saturate(.9); transition: background-color 300ms ease, backdrop-filter 300ms ease, overlay 240ms allow-discrete, display 240ms allow-discrete; }
+@starting-style { .gate[open] { opacity: 0; transform: translateY(8px) scale(.97); }.gate[open]::backdrop { background: #2a0f1800; backdrop-filter: blur(0); } }
+.gate:not([open]) { opacity: 0; transform: scale(.98); transition-duration: 160ms; }
+.logo { width: 150px; height: auto; }
+.gate h2 { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--brass); font-family: var(--font-serif),Georgia,serif; font-size: clamp(32px,7vw,40px); font-weight: 500; line-height: 1.1; letter-spacing: -.03em; color: var(--oxblood); text-wrap: balance; }.gate h2 em { font-weight: 400; }
+.gate > p { margin: 14px auto 0; max-width: 32ch; font-size: 14px; line-height: 1.7; color: var(--ink-2); text-wrap: pretty; }
+.actions { display: grid; gap: 8px; margin-top: 26px; }.actions :global(.btn) { justify-content: space-between; width: 100%; }
+.under { min-height: 48px; border: 1px solid var(--line-strong); font-size: 13px; font-weight: 500; color: var(--ink); transition: transform 120ms var(--ease), border-color 160ms ease, background-color 160ms ease; }
+.remember { display: flex; justify-content: center; align-items: center; gap: 9px; min-height: 44px; margin-top: 10px; font-size: 12px; color: var(--ink-2); cursor: pointer; }.remember input { accent-color: var(--oxblood); width: 16px; height: 16px; margin: 0; }
+.gate small { display: block; margin-top: 8px; font-size: 11.5px; color: var(--ink-3); }
+.denied { margin-top: 24px !important; padding: 14px 16px; background: #f1e4e7; color: var(--oxblood) !important; font-size: 13px !important; max-width: none !important; }
+@media(hover:hover) and (pointer:fine) { .under:hover { border-color: var(--oxblood); background: #fff; } }
+@media(max-width:700px) { .gate { padding: 32px 22px 24px; }.logo { width: 132px; } }
+@media(prefers-reduced-motion:reduce) { .gate { transition: opacity 160ms ease, overlay 160ms allow-discrete, display 160ms allow-discrete; transform: none !important; } }
+@media(prefers-reduced-transparency:reduce) { .gate::backdrop { background: #2a0f18e6; backdrop-filter: none; -webkit-backdrop-filter: none; } }
+
+/* Yes / No layout */
+.actions { grid-template-columns: 1.5fr 1fr; }
+.actions :global(.btn), .under { min-height: 50px; }
+.back { width: 100%; margin-top: 10px; }
+.gate small { margin-top: 18px; }
+
+.gate:focus, .gate:focus-visible { outline: none; }

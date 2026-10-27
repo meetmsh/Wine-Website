@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T04:59:44.556Z",
+  "title": "Design System: Uncorked Wines & Spirits",
+  "extensions": {
+    "colorMeta": {
+      "oxblood": {
+        "role": "primary",
+        "displayName": "Oxblood",
+        "canonical": "#641b2e",
+        "tonalRamp": [
+          "oklch(15% 0.1 8)",
+          "oklch(26% 0.1 8)",
+          "oklch(38% 0.1 8)",
+          "oklch(49% 0.1 8)",
+          "oklch(61% 0.1 8)",
+          "oklch(72% 0.1 8)",
+          "oklch(84% 0.1 8)",
+          "oklch(95% 0.1 8)"
+        ]
+      },
+      "oxblood-deep": {
+        "role": "primary",
+        "displayName": "Deep Oxblood",
+        "canonical": "#35141f",
+        "tonalRamp": [
+          "oklch(15% 0.05 350)",
+          "oklch(26% 0.05 350)",
+          "oklch(38% 0.05 350)",
+          "oklch(49% 0.05 350)",
+          "oklch(61% 0.05 350)",
+          "oklch(72% 0.05 350)",
+          "oklch(84% 0.05 350)",
+          "oklch(95% 0.05 350)"
+        ]
+      },
+      "brass": {
+        "role": "secondary",
+        "displayName": "Aged Brass",
+        "canonical": "#b99a62",
+        "tonalRamp": [
+          "oklch(15% 0.08 80)",
+          "oklch(26% 0.08 80)",
+          "oklch(38% 0.08 80)",
+          "oklch(49% 0.08 80)",
+          "oklch(61% 0.08 80)",
+          "oklch(72% 0.08 80)",
+          "oklch(84% 0.08 80)",
+          "oklch(95% 0.08 80)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fbfaf7",
+        "tonalRamp": [
+          "oklch(15% 0.006 85)",
+          "oklch(26% 0.006 85)",
+          "oklch(38% 0.006 85)",
+          "oklch(49% 0.006 85)",
+          "oklch(61% 0.006 85)",
+          "oklch(72% 0.006 85)",
+          "oklch(84% 0.006 85)",
+          "oklch(95% 0.006 85)"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Deep Paper",
+        "canonical": "#eae4d7",
+        "tonalRamp": [
+          "oklch(15% 0.02 85)",
+          "oklch(26% 0.02 85)",
+          "oklch(38% 0.02 85)",
+          "oklch(49% 0.02 85)",
+          "oklch(61% 0.02 85)",
+          "oklch(72% 0.02 85)",
+          "oklch(84% 0.02 85)",
+          "oklch(95% 0.02 85)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#29251f",
+        "tonalRamp": [
+          "oklch(15% 0.015 75)",
+          "oklch(26% 0.015 75)",
+          "oklch(38% 0.015 75)",
+          "oklch(49% 0.015 75)",
+          "oklch(61% 0.015 75)",
+          "oklch(72% 0.015 75)",
+          "oklch(84% 0.015 75)",
+          "oklch(95% 0.015 75)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#655b52",
+        "tonalRamp": [
+          "oklch(15% 0.02 65)",
+          "oklch(26% 0.02 65)",
+          "oklch(38% 0.02 65)",
+          "oklch(49% 0.02 65)",
+          "oklch(61% 0.02 65)",
+          "oklch(72% 0.02 65)",
+          "oklch(84% 0.02 65)",
+          "oklch(95% 0.02 65)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Tertiary Ink",
+        "canonical": "#75665e",
+        "tonalRamp": [
+          "oklch(15% 0.025 55)",
+          "oklch(26% 0.025 55)",
+          "oklch(38% 0.025 55)",
+          "oklch(49% 0.025 55)",
+          "oklch(61% 0.025 55)",
+          "oklch(72% 0.025 55)",
+          "oklch(84% 0.025 55)",
+          "oklch(95% 0.025 55)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Fine Rule",
+        "canonical": "#ded8ce",
+        "tonalRamp": [
+          "oklch(15% 0.015 80)",
+          "oklch(26% 0.015 80)",
+          "oklch(38% 0.015 80)",
+          "oklch(49% 0.015 80)",
+          "oklch(61% 0.015 80)",
+          "oklch(72% 0.015 80)",
+          "oklch(84% 0.015 80)",
+          "oklch(95% 0.015 80)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "#bfb0a3",
+        "tonalRamp": [
+          "oklch(15% 0.025 65)",
+          "oklch(26% 0.025 65)",
+          "oklch(38% 0.025 65)",
+          "oklch(49% 0.025 65)",
+          "oklch(61% 0.025 65)",
+          "oklch(72% 0.025 65)",
+          "oklch(84% 0.025 65)",
+          "oklch(95% 0.025 65)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Campaign display",
+        "purpose": "Large photographic campaign headline; mobile clamp differs."
+      },
+      "headline": {
+        "displayName": "Shelf headline",
+        "purpose": "Serif product shelf headings."
+      },
+      "title": {
+        "displayName": "Product name",
+        "purpose": "16px desktop card name, 14px mobile."
+      },
+      "body": {
+        "displayName": "Base body",
+        "purpose": "Global body foundation; compact descriptions use local sizes."
+      },
+      "label": {
+        "displayName": "Retail label",
+        "purpose": "12px catalog support, actions and shared utility labels."
+      },
+      "field": {
+        "displayName": "Search and newsletter field",
+        "purpose": "16px field text."
+      },
+      "action": {
+        "displayName": "Shared action",
+        "purpose": "13px shared buttons and text links."
+      }
+    },
+    "shadows": [
+      {
+        "name": "mobile-menu",
+        "value": "0 16px 22px #27101726",
+        "purpose": "Expanded mobile categories."
+      },
+      {
+        "name": "toast",
+        "value": "0 8px 28px #27101726",
+        "purpose": "Transient shopping feedback."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "Shared movement, press feedback and campaign transitions."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(.32,.72,0,1)",
+        "purpose": "Native bag entry and exit."
+      },
+      {
+        "name": "bag",
+        "value": "transform 260ms var(--ease-drawer), opacity 180ms var(--ease), overlay 260ms allow-discrete, display 260ms allow-discrete",
+        "purpose": "Native dialog open/close; keyboard data-instant and reduced motion disable transitions."
+      },
+      {
+        "name": "toast",
+        "value": "opacity 180ms var(--ease), transform 220ms var(--ease)",
+        "purpose": "Persistent feedback element; content updates do not remount an entry animation."
+      },
+      {
+        "name": "image-fade",
+        "value": "opacity 250ms var(--ease)",
+        "purpose": "Campaign photograph transitions; keyboard manual selection and reduced motion skip transitions."
+      },
+      {
+        "name": "press",
+        "value": "transform 120ms var(--ease)",
+        "purpose": "Subtle button scale feedback; removed for reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition-duration: .001ms; animation-duration: .001ms; animation-iteration-count: 1",
+        "purpose": "Global immediate-state override; key components also remove spatial effects."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "700px"
+      },
+      {
+        "name": "compact-header-and-shelves",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Add to bag",
+      "kind": "button",
+      "refersTo": "button-add",
+      "description": "Catalog action with outlined rest state and burgundy added/hover state.",
+      "html": "<button class=\"ds-add\">Add to bag <svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></button>",
+      "css": ".ds-add{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:8px 12px;border:1px solid #c6b5b8;border-radius:0;background:transparent;color:var(--oxblood,#641b2e);font:400 12px Geist,Arial,sans-serif;cursor:pointer}@media(hover:hover) and (pointer:fine){.ds-add:hover,.ds-add:active{background:var(--oxblood,#641b2e);color:white;border-color:var(--oxblood,#641b2e)}}.ds-add:focus-visible{outline:2px solid var(--oxblood,#641b2e);outline-offset:4px}"
+    },
+    {
+      "name": "Campaign action",
+      "kind": "button",
+      "description": "Cream call to action over campaign photography; shared 13px action type.",
+      "html": "<button class=\"ds-campaign\">Find your next favorite <span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-campaign{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-width:238px;min-height:51px;padding:0 25px;background:#f7ecda;color:#491a29;border:0;border-radius:0;font:500 13px Geist,Arial,sans-serif;cursor:pointer;transition:background-color 160ms ease}@media(hover:hover) and (pointer:fine){.ds-campaign:hover{background:#fffaf0}}.ds-campaign:focus-visible{outline:2px solid var(--oxblood,#641b2e);outline-offset:4px}"
+    },
+    {
+      "name": "Newsletter input",
+      "kind": "input",
+      "refersTo": "input-newsletter",
+      "description": "Visible label and pale square field within the burgundy newsletter region.",
+      "html": "<label class=\"ds-field\">Email address<input type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field{display:block;color:#fff4e6;background:var(--oxblood,#641b2e);padding:18px;font:400 12px Geist,Arial,sans-serif}.ds-field input{display:block;width:100%;margin-top:10px;height:52px;padding:13px;border:1px solid transparent;border-radius:0;background:#fcf8f0;color:var(--ink,#29251f);font:400 16px Geist,Arial,sans-serif;caret-color:var(--oxblood,#641b2e)}.ds-field input::placeholder{color:#71665c}.ds-field input:focus-visible{outline:2px solid #e8c795;outline-offset:3px}"
+    },
+    {
+      "name": "Category filter",
+      "kind": "chip",
+      "refersTo": "category-selected",
+      "description": "Square filter with a visible selected state.",
+      "html": "<nav class=\"ds-filters\" aria-label=\"Categories\"><a href=\"#red\" aria-current=\"page\">Red</a><a href=\"#white\">White</a></nav>",
+      "css": ".ds-filters{display:flex;gap:10px}.ds-filters a{display:flex;align-items:center;min-height:44px;padding:8px 16px;color:var(--ink,#29251f);font:400 12px Geist,Arial,sans-serif;text-decoration:none}.ds-filters a[aria-current]{background:var(--oxblood,#641b2e);color:white}@media(hover:hover) and (pointer:fine){.ds-filters a:hover{background:#e8dce0;color:var(--oxblood,#641b2e)}}.ds-filters a:focus-visible{outline:2px solid var(--oxblood,#641b2e);outline-offset:4px}"
+    },
+    {
+      "name": "Category navigation",
+      "kind": "nav",
+      "description": "Fine-rule horizontal navigation and expanding hover underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Shop\"><a href=\"#red\">Red</a><a href=\"#white\">White</a><a href=\"#spirits\">Spirits</a></nav>",
+      "css": ".ds-nav{display:flex;justify-content:center;gap:34px;border-top:1px solid var(--line,#ded8ce);background:var(--paper,#fbfaf7)}.ds-nav a{position:relative;padding:14px 0 13px;font:500 12px Geist,Arial,sans-serif;color:var(--ink,#29251f);text-decoration:none}.ds-nav a::after{content:\"\";position:absolute;bottom:0;height:2px;background:var(--oxblood,#641b2e);inset-inline:0;transform:scaleX(0);transition:transform 160ms cubic-bezier(.23,1,.32,1)}@media(hover:hover) and (pointer:fine){.ds-nav a:hover::after{transform:scaleX(1)}}.ds-nav a:focus-visible{outline:2px solid var(--oxblood,#641b2e);outline-offset:4px}"
+    },
+    {
+      "name": "Product information card",
+      "kind": "card",
+      "description": "Flat information region from a product card; image area deliberately omitted from this offline text specimen.",
+      "html": "<article class=\"ds-product\"><p class=\"ds-brand\">Producer</p><a href=\"#product\"><h3>Product name</h3></a><p class=\"ds-detail\">Wine · 750ml</p><div class=\"ds-price\"><span>$24.99</span><button>Add to bag</button></div></article>",
+      "css": ".ds-product{max-width:280px;color:var(--ink,#29251f);font-family:Geist,Arial,sans-serif;padding-top:16px}.ds-product p,.ds-product h3{margin:0}.ds-brand{font-size:12px;font-weight:500;color:var(--oxblood,#641b2e);margin-bottom:5px!important}.ds-product a{color:inherit;text-decoration:none}.ds-product h3{font-size:16px;font-weight:500;line-height:1.4}.ds-detail{font-size:12px;line-height:1.7;margin-top:6px!important;color:var(--ink-2,#655b52)}.ds-price{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:15px;padding-top:10px;border-top:1px solid var(--line,#ded8ce);font-size:16px;font-weight:500;font-variant-numeric:tabular-nums}.ds-price button{min-height:44px;padding:8px 12px;background:transparent;border:1px solid #c6b5b8;color:var(--oxblood,#641b2e);font:400 12px Geist,Arial,sans-serif;cursor:pointer}@media(hover:hover) and (pointer:fine){.ds-price button:hover{background:var(--oxblood,#641b2e);color:white}}.ds-price button:focus-visible{outline:2px solid var(--oxblood,#641b2e);outline-offset:4px}.ds-product a:focus-visible{outline:2px solid var(--oxblood,#641b2e);outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Neighborhood Window Campaign",
+    "overview": "Uncorked pairs its established grape logo with the confidence of a photographic shop-window campaign. Warm paper, burgundy and aged gold connect the shopping interface to the supplied neighborhood identity. High-contrast serif headlines provide expression; plain sans-serif controls keep browsing direct.\n\nThe system alternates generous campaign areas with compact, readable product shelves. Bottle photography, fine rules and quiet surface changes carry the visual structure. The durable identity comes from the logo, palette, typography and photographic material, rather than a fixed page composition. The first storefront expression is recorded in [.impeccable/surfaces/storefront.md](.impeccable/surfaces/storefront.md).",
+    "keyCharacteristics": [
+      "Burgundy-and-gold neighborhood identity.",
+      "Expressive serif headlines with practical sans-serif retail information.",
+      "Square photographic surfaces and compact product shelves.",
+      "Fine rules, warm tonal layers and restrained movement."
+    ],
+    "rules": [
+      {
+        "name": "The Brand Anchor Rule",
+        "body": "Preserve the supplied uppercase grape logo and its burgundy-and-gold identity on every new surface that carries the store brand.",
+        "section": "colors"
+      },
+      {
+        "name": "The Retail Reading Rule",
+        "body": "The catalog's repeated support and action text uses (12px), product-card names use at least (14px), and search/newsletter input text uses (16px). These describe the final retail overrides, not every shared or legacy style.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "**Do** preserve the supplied grape logo and burgundy-and-gold identity.",
+      "**Do** pair expressive Bodoni headings with Geist shopping information.",
+      "**Do** maintain readable retail copy, visible focus and compact controls with at least (44px) action targets where established.",
+      "**Do** use contained product imagery and cropped editorial photography for their respective roles.",
+      "**Do** preserve reduced-motion behavior and visible sample/integration disclosures."
+    ],
+    "donts": [
+      "**Don't** replace the logo with newly typeset brand lettering.",
+      "**Don't** add generic rounded, shadowed shells around the flat product shelves.",
+      "**Don't** shrink retail text to fit more products into a row.",
+      "**Don't** hide product facts or essential shopping actions behind hover-only interactions on mobile."
+    ]
+  }
+}

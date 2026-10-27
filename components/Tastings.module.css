@@ -1,0 +1,85 @@
+.dateTile { position: absolute; top: 16px; left: 16px; z-index: 1; display: grid; place-items: center; width: 62px; padding: 9px 0 8px; background: var(--paper); color: var(--oxblood); line-height: 1; box-shadow: 0 6px 18px -8px #1c090e66; }
+.dateTile b { font-family: var(--font-serif); font-size: 28px; font-weight: 500; letter-spacing: -.03em; }
+.dateTile span { margin-top: 5px; font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.when { font-size: 12px; font-weight: 500; letter-spacing: .02em; }
+
+/* Home teaser */
+.teaser { padding-block: 8px 76px; }
+.teaserHead { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.teaserHead h2 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(35px,3.7vw,51px); letter-spacing: -.03em; line-height: 1.1; text-wrap: balance; }
+.teaserHead h2 em { color: var(--oxblood); }
+.teaserHead p { margin-top: 14px; font-size: 14px; line-height: 1.7; color: var(--ink-2); max-width: 46ch; }
+.allLink { display: inline-flex; align-items: center; gap: 18px; padding-block: 12px 6px; border-bottom: 1px solid var(--line-strong); font-size: 12px; white-space: nowrap; }
+.teaserGrid { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(0,1fr); gap: 24px; }
+.feature { position: relative; display: flex; align-items: flex-end; min-height: 420px; overflow: hidden; color: #fff7ec; background: var(--oxblood-deep); isolation: isolate; }
+.featurePhoto { object-fit: cover; z-index: -2; transition: transform 600ms var(--ease); }
+.feature::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,#1c090ee6 0%,#1c090e80 38%,#1c090e00 70%); }
+.featureCopy { display: grid; gap: 10px; padding: 30px 32px; }
+.featureCopy .when { color: #ecd5b1; }
+.featureTitle { font-family: var(--font-serif); font-size: clamp(32px,3vw,44px); font-weight: 500; line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; }
+.featureTitle em { color: #ecd5b1; }
+.featureCta { display: inline-flex; align-items: center; gap: 14px; width: max-content; margin-top: 6px; padding-bottom: 4px; border-bottom: 1px solid #e9d4bf99; font-size: 13px; }
+.upcomingWrap { display: flex; flex-direction: column; }
+.upcoming { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.upcoming a { display: grid; grid-template-columns: 62px minmax(0,1fr) auto; align-items: center; gap: 20px; padding-block: 20px; border-bottom: 1px solid var(--line); transition: color 160ms ease; }
+.upcoming .dateTile { position: static; box-shadow: none; background: #f3ebde; }
+.upcoming b { display: block; font-family: var(--font-serif); font-size: 22px; font-weight: 500; line-height: 1.2; letter-spacing: -.02em; }
+.upcoming small { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ink-2); }
+.upcoming svg { color: var(--ink-3); transition: transform 200ms var(--ease), color 160ms ease; }
+.sampleNote { margin-top: auto; padding-top: 18px; font-size: 12px; line-height: 1.7; color: var(--ink-2); }
+.sampleNote a, .sample a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Tastings page */
+.page { padding-block: 28px 80px; }
+.crumbs { display: flex; gap: 12px; font-size: 12px; color: var(--ink-2); }
+.pageHead { max-width: 760px; padding-block: 34px 50px; }
+.pageHead h1 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(44px,5.4vw,78px); line-height: 1.04; letter-spacing: -.035em; text-wrap: balance; }
+.pageHead h1 em { color: var(--oxblood); }
+.pageHead > p { margin-top: 22px; max-width: 58ch; font-size: 16px; line-height: 1.75; color: var(--ink-2); text-wrap: pretty; }
+.pageHead > .sample { margin-top: 16px; font-size: 12px; }
+.events { display: grid; gap: 28px; }
+.event { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); background: #f5f1ea; scroll-margin-top: calc(var(--header-h) + 24px); }
+.eventPhoto { position: relative; min-height: 460px; background: var(--oxblood-deep); }
+.eventPhoto img { object-fit: cover; }
+.eventBody { padding: clamp(28px,3.4vw,48px); display: flex; flex-direction: column; }
+.eventBody .when { color: var(--oxblood); }
+.eventBody h2 { margin-top: 12px; font-family: var(--font-serif); font-weight: 500; font-size: clamp(32px,3vw,44px); line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; }
+.eventBody h2 em { color: var(--oxblood); }
+.eventText { margin-top: 14px; max-width: 54ch; font-size: 14.5px; line-height: 1.75; color: var(--ink-2); }
+.lineup { margin-top: 26px; }
+.lineup h3 { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; }
+.lineup ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.bottle { display: grid; grid-template-columns: 56px minmax(0,1fr) auto; align-items: center; gap: 16px; padding-block: 10px; border-bottom: 1px solid var(--line); }
+.bottlePhoto { display: grid; place-items: center; height: 72px; background: #fff; }
+.bottlePhoto img { width: 44px; height: 62px; object-fit: contain; mix-blend-mode: multiply; }
+.bottleInfo { min-width: 0; font-size: 14px; font-weight: 500; line-height: 1.35; }
+.bottleInfo small { display: block; font-size: 11.5px; color: var(--oxblood); margin-bottom: 2px; }
+.bottlePrice { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.bottlePrice em { font-style: normal; font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1; padding: 4px 6px; background: var(--oxblood); color: #fff8ee; }
+.bottlePrice s { color: var(--ink-3); font-weight: 400; font-size: 12px; }
+.bottle button { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 0 14px; border: 1px solid #c6b5b8; color: var(--oxblood); font-size: 12px; transition: transform 120ms var(--ease), background-color 160ms ease, color 160ms ease, border-color 160ms ease; }
+.bottle button[data-added=true] { background: var(--oxblood); border-color: var(--oxblood); color: #fff; }
+.addAll { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 46px; margin-top: 12px; padding: 0 16px; background: #ece3d4; color: var(--oxblood); font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.addAll[data-added=true] { background: var(--oxblood); color: #fff8ee; }
+.eventActions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; margin-top: 28px; padding-top: 4px; }
+.eventActions :global(.btn) { min-width: 230px; justify-content: space-between; }
+.eventActions > span { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
+
+@media(hover:hover) and (pointer:fine) {
+  .feature:hover .featurePhoto { transform: scale(1.03); }
+  .upcoming a:hover { color: var(--oxblood); }.upcoming a:hover svg { color: var(--oxblood); transform: translateX(3px); }
+  .allLink:hover { color: var(--oxblood); border-color: var(--oxblood); }
+  .bottle button:not([data-added=true]):hover { background: var(--oxblood); color: #fff8ee; border-color: var(--oxblood); }
+  .addAll:not([data-added=true]):hover { background: #e4d7c3; }
+}
+@media(max-width:1000px) { .teaserGrid { grid-template-columns: 1fr; }.feature { min-height: 380px; }.event { grid-template-columns: 1fr; }.eventPhoto { min-height: 300px; } }
+@media(max-width:700px) {
+  .teaser { padding-bottom: 50px; }.teaserHead { flex-direction: column; align-items: flex-start; margin-bottom: 22px; }.teaserHead h2 { font-size: 34px; }.teaserHead p { font-size: 13.5px; }
+  .feature { min-height: 340px; }.featureCopy { padding: 22px; }.featureTitle { font-size: 30px; }
+  .upcoming a { gap: 14px; padding-block: 16px; }.upcoming b { font-size: 19px; }
+  .pageHead { padding-block: 24px 34px; }.pageHead h1 { font-size: 44px; }.pageHead > p { font-size: 15px; }
+  .eventPhoto { min-height: 240px; }.eventBody { padding: 24px 20px 28px; }.eventBody h2 { font-size: 31px; }
+  .bottle { gap: 12px; }.bottle button span { display: none; }.bottle button { padding: 0; width: 44px; min-height: 44px; justify-content: center; }
+  .eventActions :global(.btn) { width: 100%; }
+}
+@media(prefers-reduced-motion:reduce) { .featurePhoto, .upcoming svg { transition: none; } }

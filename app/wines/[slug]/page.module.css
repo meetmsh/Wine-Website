@@ -1,0 +1,257 @@
+.product {
+  padding: clamp(28px, 4vw, 56px) 0 clamp(96px, 12vw, 160px);
+}
+
+.crumbs {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+  margin-bottom: clamp(40px, 5vw, 72px);
+  color: var(--ink-2);
+}
+
+.crumbs a:hover {
+  color: var(--oxblood);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(40px, 7vw, 120px);
+  align-items: flex-start;
+}
+
+/* ——— Stage ——— */
+
+.stage {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 0 0;
+  background: var(--paper-deep);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 14px 14px 0;
+  border: 1px solid var(--line-strong);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  z-index: -1;
+}
+
+.stage::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 13%;
+  border-top: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--paper-deep) 70%, var(--ink) 8%);
+  z-index: -1;
+}
+
+.bottle {
+  position: absolute;
+  left: 50%;
+  bottom: 11%;
+  width: 27%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.stageLeft,
+.stageRight {
+  position: absolute;
+  bottom: 4.5%;
+  color: var(--ink-3);
+}
+
+.stageLeft {
+  left: 8%;
+}
+
+.stageRight {
+  right: 8%;
+}
+
+/* ——— Info ——— */
+
+.producer {
+  color: var(--oxblood);
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 6.4vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.title em {
+  color: var(--ink-3);
+}
+
+.notes {
+  margin-top: 24px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  color: var(--ink-2);
+}
+
+.description {
+  max-width: 48ch;
+  margin-top: clamp(32px, 4vw, 52px);
+  font-size: 16.5px;
+  color: var(--ink-2);
+}
+
+.buy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.buy > :global(.label) {
+  color: var(--ink-3);
+}
+
+.specs {
+  margin: clamp(48px, 6vw, 80px) 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  border-top: 1px solid var(--ink);
+}
+
+.specs div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.specs dt {
+  color: var(--ink-3);
+}
+
+.specs dd {
+  margin: 0;
+  font-size: 15.5px;
+}
+
+/* ——— Related ——— */
+
+.related {
+  padding-block: clamp(80px, 10vw, 144px);
+  background: var(--paper-deep);
+}
+
+.relatedHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+  margin-bottom: 48px;
+}
+
+.relatedTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: 28px;
+}
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardStage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.cardBottle {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  width: 22%;
+  height: auto;
+  transform: translateX(-50%);
+  transition: transform 0.8s var(--ease);
+}
+
+.card:hover .cardBottle {
+  transform: translate(-50%, -8px);
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0 10px;
+  color: var(--ink-3);
+}
+
+.cardName {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 1.05;
+}
+
+.cardName em {
+  color: var(--ink-3);
+}
+
+.cardProducer {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .stage {
+    position: relative;
+    top: 0;
+    max-width: 440px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .specs {
+    grid-template-columns: 1fr;
+  }
+}

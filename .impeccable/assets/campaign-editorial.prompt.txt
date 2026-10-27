@@ -1,0 +1,5 @@
+Use case: photorealistic-natural
+Asset type: website hero background photograph with overlaid HTML type on the left, not a UI mockup.
+Primary request: Wide 16:9 editorial still-life photographed like a premium food and wine magazine. Tactile deep burgundy draped tablecloth and matching oxblood plaster backdrop. Right half has two very fine thin-stemmed red wine glasses, one standing and another visible low in the composition with a reflection, a dark unbranded wine bottle on the table, a small cluster of dark grapes, and a linen napkin. Warm hard late-afternoon window light from upper right, intentional long shadows, amber wine reflections, quiet rich color, authentic film detail.
+Composition/framing: left 50% mostly empty burgundy negative space with gentle light and cloth texture for cream headline. Glasses and bottle arranged entirely on right, kept visible in landscape crops. High-end natural photographic composition.
+Constraints: no humans, no text, no logos, no UI, no watermarks. Not 3D or glossy CGI.

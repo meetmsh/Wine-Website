@@ -1,0 +1,51 @@
+﻿[
+    {
+        "value":  [
+                      {
+                          "value":  "    ",
+                          "Count":  5
+                      },
+                      {
+                          "file":  "images/stock/varietal-cabernet.jpg",
+                          "source":  "https://unsplash.com/photos/Ls5oWV9e764",
+                          "image":  "https://images.unsplash.com/photo-1642556288596-a75c28303cf8",
+                          "photographer":  "Mauro Lima",
+                          "license":  "Unsplash License (free commercial use, no attribution required)",
+                          "retrieved":  "2026-10-23"
+                      },
+                      {
+                          "file":  "images/stock/varietal-sauvignon-blanc.jpg",
+                          "source":  "https://unsplash.com/photos/hand-holding-white-wine-glass-qmRrjbjFP0c",
+                          "image":  "https://images.unsplash.com/photo-1651665849313-91055ad02729",
+                          "photographer":  "Dorien Beernink",
+                          "license":  "Unsplash License (free commercial use, no attribution required)",
+                          "retrieved":  "2026-10-23"
+                      },
+                      {
+                          "file":  "images/stock/varietal-pinot-noir.jpg",
+                          "source":  "https://unsplash.com/photos/clear-wine-glass-with-red-wine-8em0b1ziHd0",
+                          "image":  "https://images.unsplash.com/photo-1600673177531-46749442aa63",
+                          "photographer":  "the blowup",
+                          "license":  "Unsplash License (free commercial use, no attribution required)",
+                          "retrieved":  "2026-10-23"
+                      },
+                      {
+                          "file":  "images/stock/varietal-chardonnay.jpg",
+                          "source":  "https://unsplash.com/photos/a-close-up-of-a-wine-glass-on-a-table-ZWXeycnhPoA",
+                          "image":  "https://images.unsplash.com/photo-1642556288591-4b27911731cf",
+                          "photographer":  "Mauro Lima",
+                          "license":  "Unsplash License (free commercial use, no attribution required)",
+                          "retrieved":  "2026-10-23"
+                      }
+                  ],
+        "Count":  5
+    },
+    {
+        "file":  "images/stock/halloween.jpg",
+        "source":  "https://unsplash.com/photos/uTc3-Y0FFKs",
+        "image":  "https://images.unsplash.com/photo-1636300829296-ec39d1383b05",
+        "photographer":  "Anna Kumpan",
+        "license":  "Unsplash License (free commercial use, no attribution required)",
+        "retrieved":  "2026-10-27"
+    }
+]
