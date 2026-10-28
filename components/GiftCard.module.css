@@ -133,3 +133,11 @@
 .fine { margin-top: 6px; font-size: 12px; }
 @media(max-width:600px) { .form { margin-inline: calc(var(--gutter) * -1); padding: 26px var(--gutter); border-inline: 0; }.form::before { left: var(--gutter); right: var(--gutter); }.field input, .field textarea { font-size: 16px; } }
 @media(max-width:960px) { .layout { grid-template-columns: 1fr; }.intro { position: static; } }
+
+/* Clear amounts, tighter centered layout, slimmer custom field */
+@media(min-width:961px) { .layout { grid-template-columns: minmax(0,480px) minmax(0,480px); justify-content: center; gap: 72px; } }
+.amount { font-family: var(--font-sans); font-size: 17px; font-weight: 600; letter-spacing: 0; font-variant-numeric: tabular-nums lining-nums; }
+.custom { padding: 3px 3px 3px 14px; }
+.customInput { height: 36px; padding: 0 10px; }
+.customInput i { font-size: 15px; }
+.customInput input { width: 64px; font-family: var(--font-sans); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
