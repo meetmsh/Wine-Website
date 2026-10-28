@@ -224,6 +224,12 @@ Gift amounts accept whole dollars from $10 to $500. Preserve invalid input and e
 
 The local Privacy information and Shopping information pages describe actual website behavior. They are not represented as complete, approved business legal policies. Production service setup and the shop's complete policy text remain owner-supplied launch inputs.
 
+### Social Sharing Artwork
+
+The default share image is a static 1200 × 630 JPEG, approximately 140KB. An off-center split pairs a paper typography field (672px) with full-height editorial wine photography (528px). The current Bodoni Moda wordmark, italic trade line and brass rules appear at the top; the two-line Good taste. Great company. headline carries the main hierarchy. A quiet Geist shop/location line anchors the bottom. Keep 64px horizontal copy margins, generous negative space and the existing palette. The source is `design/social-preview.html`; `npm run og:image` exports it using the site's built fonts. Image provenance is recorded in `public/images/social/provenance.json`.
+
+Open Graph and Twitter large-image metadata use the same image, dimensions and alt text. SITE_URL is an explicit deployment-origin override; otherwise Vercel's production/deployment domains are used before the existing shop-domain fallback. Artwork changes require a versioned image path update so the metadata references the intended export.
+
 ## Do's and Don'ts
 
 ### Do:

@@ -1,0 +1,16 @@
+{
+  "uncorked-share-v1.jpg": {
+    "purpose": "Default Open Graph and Twitter large-image share artwork",
+    "dimensions": { "width": 1200, "height": 630 },
+    "created": "2026-10-28",
+    "composition": "Custom typographic composition authored for Uncorked. Editable source: design/social-preview.html. Rendered with scripts/render-social-preview.mjs using the site's existing Bodoni Moda and Geist font assets.",
+    "photography": {
+      "source": "public/images/campaign-editorial.png",
+      "sourceSha256": "ad057e3d78a908a97980a57aa94e54bc381b44508c65e58d2759a4a3c7739bcc",
+      "origin": "Existing project image generated with the built-in image_gen tool on 2026-10-21. No new photograph was generated for this share card.",
+      "originalProvenance": ".impeccable/assets/campaign-editorial.origin.txt",
+      "originalPrompt": ".impeccable/assets/campaign-editorial.prompt.txt"
+    },
+    "export": "Static JPEG, Chrome-rendered at 1x, quality 95. No external font or image service is required when the preview is requested."
+  }
+}

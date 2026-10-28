@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1200, initial-scale=1">
+  <title>Uncorked — social preview artwork</title>
+  <style>
+    /* FONT_FACES */
+    * { box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+    body { background: #fbfaf7; color: #29251f; -webkit-font-smoothing: antialiased; }
+    .artwork { display: grid; grid-template-columns: 672px 528px; width: 1200px; height: 630px; }
+    .copy { position: relative; padding: 60px 64px; }
+    .wordmark { display: inline-grid; justify-items: stretch; color: #641b2e; }
+    .name { font: 600 43px/1 "Bodoni Moda", serif; letter-spacing: .07em; margin-right: -.07em; }
+    .trade { display: flex; align-items: center; justify-content: center; gap: 13px; margin-top: 8px; font: italic 500 19px/1.2 "Bodoni Moda", serif; color: #655b52; }
+    .trade::before, .trade::after { content: ""; flex: 1; height: 1px; background: #b99a62; }
+    h1 { margin: 100px 0 0; font: 500 78px/1.04 "Bodoni Moda", serif; letter-spacing: -.035em; }
+    h1 span { display: block; white-space: nowrap; }
+    h1 em { color: #641b2e; font-weight: 500; }
+    .location { position: absolute; bottom: 59px; left: 64px; }
+    .location p { margin: 0; font: 400 21px/1.45 Geist, sans-serif; letter-spacing: -.015em; }
+    .location small { display: block; margin-top: 6px; font: 400 17px/1.4 Geist, sans-serif; color: #655b52; }
+    .photograph { width: 528px; height: 630px; margin: 0; overflow: hidden; background: #541b22; }
+    .photograph img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 80% center; }
+  </style>
+</head>
+<body>
+  <main class="artwork">
+    <section class="copy">
+      <div class="wordmark" aria-label="Uncorked Wines & Spirits">
+        <span class="name">UNCORKED</span>
+        <span class="trade">Wines &amp; Spirits</span>
+      </div>
+      <h1><span>Good taste.</span><span><em>Great company.</em></span></h1>
+      <div class="location"><p>Your neighborhood bottle shop.</p><small>Hoboken, New Jersey</small></div>
+    </section>
+    <figure class="photograph"><img src="{{CAMPAIGN_IMAGE}}" alt="Red wine, a bottle and grapes in warm afternoon light."></figure>
+  </main>
+</body>
+</html>

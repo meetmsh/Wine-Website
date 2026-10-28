@@ -17,7 +17,19 @@ const business = {
   address: { "@type": "PostalAddress", streetAddress: "1450 Washington Street", addressLocality: "Hoboken", addressRegion: "NJ", postalCode: "07030", addressCountry: "US" },
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", interactiveWidget: "resizes-content", themeColor: "#fbfaf7" };
-export const metadata: Metadata = { metadataBase: new URL(siteUrl), openGraph: { type: "website", siteName: "Uncorked Wines & Spirits", locale: "en_US", images: [{ url: "/images/vineyard.jpg", alt: "Vineyard landscape at sunset" }] }, twitter: { card: "summary_large_image", images: ["/images/vineyard.jpg"] }, title: { default: "Uncorked Wines & Spirits | Your Neighborhood Bottle Shop, Hoboken", template: "%s | Uncorked Hoboken" }, description: "Explore wine, craft beer, spirits and ready-to-drink favorites at Uncorked Wines & Spirits. Visit your neighborhood bottle shop at 1450 Washington Street, Hoboken, NJ. For adults 21+." };
+const shareImage = {
+  url: "/images/social/uncorked-share-v1.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Uncorked Wines & Spirits. Good taste. Great company. Your neighborhood bottle shop in Hoboken, New Jersey.",
+};
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: { default: "Uncorked Wines & Spirits | Your Neighborhood Bottle Shop, Hoboken", template: "%s | Uncorked Hoboken" },
+  description: "Explore wine, craft beer, spirits and ready-to-drink favorites at Uncorked Wines & Spirits. Visit your neighborhood bottle shop at 1450 Washington Street, Hoboken, NJ. For adults 21+.",
+  openGraph: { type: "website", siteName: "Uncorked Wines & Spirits", locale: "en_US", images: [{ ...shareImage, type: "image/jpeg" }] },
+  twitter: { card: "summary_large_image", images: [shareImage] },
+};
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(business).replace(/</g, "\u003c") }} /><AgeGate><CellarProvider><ServiceProvider><Header /><main id="main-content">{children}</main><Footer /><MotionRoot /></ServiceProvider></CellarProvider></AgeGate></body></html>;
 }
