@@ -64,11 +64,13 @@ export function GiftCard() {
           <div className={styles.amounts} role="radiogroup" aria-label="Gift card amount">
             {PRESETS.map(p => <label key={p} className={styles.amount} data-on={!custom && amount === p}><input type="radio" name="preset" value={p} checked={!custom && amount === p} onChange={() => { setAmount(p); setCustom(""); }} />{money(p).replace(".00", "")}</label>)}
           </div>
-          <label className={styles.custom} data-on={Boolean(custom)}>
-            <span>Or enter an amount</span>
-            <span className={styles.customInput}><i>$</i><input inputMode="numeric" placeholder={`${MIN}–${MAX}`} value={custom} onChange={e => setCustom(e.target.value.replace(/\D/g, "").slice(0, 3))} aria-label={`Custom amount, ${MIN} to ${MAX} dollars`} /></span>
-          </label>
-          {custom && !valid && <p className={styles.warn}>Choose an amount between ${MIN} and ${MAX}.</p>}
+          <div className={styles.other}>
+            <label className={styles.otherField} data-on={Boolean(custom)} data-invalid={Boolean(custom) && !valid}>
+              <span className={styles.otherLabel}>Other amount</span>
+              <span className={styles.otherInput}><i aria-hidden="true">$</i><input inputMode="numeric" placeholder="0" value={custom} onChange={e => setCustom(e.target.value.replace(/\D/g, "").slice(0, 3))} aria-label={`Other amount, ${MIN} to ${MAX} dollars`} aria-describedby="gift-range" /></span>
+            </label>
+            <span id="gift-range" className={styles.range} data-invalid={Boolean(custom) && !valid}>{custom && !valid ? `Enter $${MIN} to $${MAX}` : `Any amount from $${MIN} to $${MAX}`}</span>
+          </div>
         </fieldset>
 
         <fieldset className={styles.step}>
@@ -88,18 +90,22 @@ export function GiftCard() {
           </div>
         </fieldset>
 
-        <div className={styles.payment}>
-          <Icon name="glass" width="18" height="18" />
-          <p><b>Secure card payment connects here.</b> Online payment isn’t switched on in this preview yet, so no card will be charged. Until it is, buy a gift card in store or by phone at <a href="tel:+19083822133">(908) 382-2133</a>.</p>
-        </div>
-
         <label className={styles.age}><input type="checkbox" name="age" required /><span>I confirm I am <b>21 or older</b>.</span></label>
         {status.kind === "error" && <p className={styles.error} role="alert">{status.message}</p>}
-        <dl className={styles.summary}><div><dt>eGift card{to ? ` for ${to}` : ""}</dt><dd>{valid ? money(value) : "—"}</dd></div><div><dt>Delivery</dt><dd>Free, by email</dd></div><div className={styles.summaryTotal}><dt>Total</dt><dd>{valid ? money(value) : "—"}</dd></div></dl>
-        <button type="submit" className={styles.pay} disabled={!valid || status.kind === "sending"}>
-          <span>{status.kind === "sending" ? "Processing…" : "Pay and send"}</span><span className={styles.payTotal}>{valid ? money(value) : "—"}</span>
-        </button>
-        <p className={styles.fine}>eGift cards are delivered by email and can be used online or in store. Questions about a balance? Call (908) 382-2133.</p>
+
+        {/* Checkout block: a deep wine panel that holds the order, the total and the action */}
+        <div className={styles.checkout}>
+          <dl className={styles.summary}>
+            <div><dt>eGift card{to ? ` for ${to}` : ""}</dt><dd>{valid ? money(value) : "—"}</dd></div>
+            <div><dt>Delivery</dt><dd>Free, by email</dd></div>
+            <div className={styles.summaryTotal}><dt>Total</dt><dd>{valid ? money(value) : "—"}</dd></div>
+          </dl>
+          <button type="submit" className={styles.pay} disabled={!valid || status.kind === "sending"}>
+            <span>{status.kind === "sending" ? "Processing…" : "Pay and send"}</span><Icon name="arrow" width="18" height="18" />
+          </button>
+          <p className={styles.secure}><Icon name="glass" width="14" height="14" /><span>Card payments connect here soon; no card is charged in this preview. To buy today, call <a href="tel:+19083822133">(908) 382-2133</a>.</span></p>
+        </div>
+        <p className={styles.fine}>eGift cards are delivered by email and can be used online or in store.</p>
       </form>
     </div>
   </section>;
