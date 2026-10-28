@@ -83,5 +83,5 @@ export const navMenu: NavItem[] = [
   ] },
   { id: "rtd", label: "Ready to drink", href: shopHref({ type: "Ready to drink" }) },
   { id: "cigars", label: "Cigars", href: shopHref({ collection: "cigars" }) },
-  { id: "gift-cards", label: "eGift Cards", href: shopHref({ collection: "gift-cards" }) },
+  { id: "gift-cards", label: "eGift Cards", href: "/gift-cards" },
 ];
