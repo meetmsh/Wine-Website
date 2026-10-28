@@ -78,3 +78,25 @@
   .grid { grid-template-columns: 1fr; }
   .custom { flex-wrap: wrap; }
 }
+
+/* Compact form: smaller type, controls and spacing */
+.layout { grid-template-columns: minmax(0,1fr) minmax(0,440px); }
+.form { gap: 8px; }
+.step { padding: 16px 0 18px; }
+.step legend { margin-bottom: 12px; }
+.step legend b { font-size: 19px; }
+.amounts { gap: 6px; }
+.amount { height: 46px; font-size: 18px; }
+.custom { margin-top: 6px; padding: 4px 4px 4px 12px; }
+.custom > span:first-child { font-size: 12.5px; }
+.customInput { height: 36px; padding: 0 10px; }
+.customInput input { width: 70px; font-size: 17px; }
+.grid { gap: 10px 12px; }
+.field { gap: 5px; }
+.field > span { font-size: 12px; }
+.field input { height: 42px; padding: 0 12px; font-size: 15px; }
+.field textarea { padding: 10px 12px; font-size: 15px; }
+.payment { padding: 12px 14px; font-size: 12.5px; }
+.age { font-size: 13px; }
+.pay { height: 50px; font-size: 14px; }
+@media(max-width:600px) { .field input, .field textarea { font-size: 16px; } }

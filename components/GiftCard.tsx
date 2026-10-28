@@ -26,7 +26,7 @@ export function GiftCard() {
     try {
       const response = await fetch("/api/gift-cards", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
         amount: value, recipientName: d.get("recipientName"), recipientEmail: d.get("recipientEmail"), senderName: d.get("senderName"), senderEmail: d.get("senderEmail"),
-        message: note, sendOn: d.get("sendOn") || null, ageConfirmed: d.get("age") === "on",
+        message: note, ageConfirmed: d.get("age") === "on",
       }) });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.message || "We couldn’t complete your gift card. Please try again.");
@@ -77,7 +77,6 @@ export function GiftCard() {
             <label className={styles.field}><span>Recipient’s name</span><input name="recipientName" required maxLength={80} autoComplete="off" value={to} onChange={e => setTo(e.target.value)} /></label>
             <label className={styles.field}><span>Recipient’s email</span><input name="recipientEmail" type="email" required maxLength={254} autoComplete="off" /></label>
             <label className={`${styles.field} ${styles.wide}`}><span>Message<em> optional</em></span><textarea rows={3} maxLength={240} value={note} onChange={e => setNote(e.target.value)} placeholder="Cheers to you…" /><small>{240 - note.length} characters left</small></label>
-            <label className={styles.field}><span>Send on<em> optional</em></span><input name="sendOn" type="date" min={new Date().toISOString().slice(0, 10)} /></label>
           </div>
         </fieldset>
 

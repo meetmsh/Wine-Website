@@ -16,13 +16,12 @@ export async function POST(request: Request) {
   if (!senderName || !senderEmail) return NextResponse.json({ message: "Add your name and email for the receipt." }, { status: 400 });
   if (body.ageConfirmed !== true) return NextResponse.json({ message: "Please confirm you are 21 or older." }, { status: 400 });
   const message = typeof body.message === "string" ? body.message.trim().slice(0, 240) : "";
-  const sendOn = typeof body.sendOn === "string" && /^\d{4}-\d{2}-\d{2}$/.test(body.sendOn) ? body.sendOn : null;
 
   const endpoint = process.env.GIFTCARD_WEBHOOK_URL;
   if (!endpoint) return NextResponse.json({ message: "Online gift card payments aren’t connected yet, so no card was charged. Call us at (908) 382-2133 or visit the shop to buy a gift card today." }, { status: 503 });
   try {
     if (!endpoint.startsWith("https://")) throw new Error("Gift card endpoint must use HTTPS");
-    const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", ...(process.env.GIFTCARD_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.GIFTCARD_WEBHOOK_TOKEN}` } : {}) }, body: JSON.stringify({ source: "uncorked-storefront", amount, recipient: { name: recipientName, email: recipientEmail }, sender: { name: senderName, email: senderEmail }, message, sendOn }), signal: AbortSignal.timeout(10000) });
+    const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", ...(process.env.GIFTCARD_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.GIFTCARD_WEBHOOK_TOKEN}` } : {}) }, body: JSON.stringify({ source: "uncorked-storefront", amount, recipient: { name: recipientName, email: recipientEmail }, sender: { name: senderName, email: senderEmail }, message }), signal: AbortSignal.timeout(10000) });
     if (!response.ok) throw new Error("Gift card system unavailable");
     const result = await response.json().catch(() => ({}));
     return NextResponse.json({ placed: true, checkoutUrl: typeof result.checkoutUrl === "string" && result.checkoutUrl.startsWith("https://") ? result.checkoutUrl : null });
