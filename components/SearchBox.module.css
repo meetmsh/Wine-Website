@@ -5,13 +5,13 @@
 .box:focus-within .icon { color: var(--oxblood); }
 .box input { flex: 1; min-width: 0; height: 100%; padding: 0 12px; border: 0; background: transparent; color: var(--ink); font-size: 15px; letter-spacing: -.005em; caret-color: var(--oxblood); }
 .box input:focus, .box input:focus-visible { outline: none; }
-.box input::placeholder { color: #8a7d73; opacity: 1; transition: color 180ms ease; }
-.box:focus-within input::placeholder { color: #b3a79c; }
+.box input::placeholder { color: var(--ink-2); opacity: 1; }
+.box:focus-within input::placeholder { color: var(--ink-2); }
 .box input::-webkit-search-cancel-button { appearance: none; }
 .box input::selection { background: #641b2e24; }
 .kbd { display: grid; place-items: center; min-width: 22px; height: 22px; margin-right: 14px; padding: 0 6px; border: 1px solid #29251f1f; border-radius: 6px; background: #faf7f2; color: var(--ink-3); font-family: var(--font-sans); font-size: 11.5px; transition: opacity 160ms ease; }
 .box:focus-within .kbd { opacity: 0; }
-.clear { display: grid; place-items: center; width: 32px; height: 32px; margin-right: 8px; border-radius: 50%; color: var(--ink-2); transition: background-color 160ms ease, color 160ms ease; }
+.clear { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; margin-right: 2px; border-radius: 50%; color: var(--ink-2); transition: background-color 160ms ease, color 160ms ease; }
 
 /* Panel: one surface, wine first */
 .panel { position: absolute; top: calc(100% + 10px); left: 0; right: 0; z-index: 90; overflow: hidden; border: 1px solid #29251f17; border-radius: 16px; background: #fff; box-shadow: 0 28px 60px -28px #2710175c, 0 4px 12px -6px #2710171a; transform-origin: top center; animation: panelIn 200ms var(--ease) both; }
@@ -28,7 +28,7 @@
 .style small { display: block; margin-top: 2px; font-size: 12px; color: var(--ink-2); }
 .swatch { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffffff8c 0 14%, transparent 15%), var(--swatch); box-shadow: inset 0 0 0 1px #29251f1f, inset 0 -6px 10px -4px #00000033; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips a { display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border: 1px solid #29251f1a; border-radius: 999px; font-size: 13px; color: var(--ink); transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease; }
+.chips a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid #29251f1a; border-radius: 999px; font-size: 13px; color: var(--ink); transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease; }
 .trending ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 
 /* Rows shared by trending, categories and bottles */

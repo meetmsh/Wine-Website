@@ -12,6 +12,6 @@ export function Footer() {
       <nav aria-label="Footer shop navigation"><h3>Find your pour</h3><div className={styles.footerLinks}>{categories.map(c => <Link key={c.id} href={c.href}>{c.label}</Link>)}</div></nav>
       <div className={styles.visit}><h3>Come say hello</h3><a href="https://maps.google.com/?q=1450+Washington+St+Hoboken+NJ" target="_blank" rel="noreferrer">1450 Washington Street<br />Hoboken, NJ 07030</a><a href="tel:+19083822133">(908) 382-2133</a><p>Mon–Thu: 11am–10pm<br />Fri–Sat: 10am–10pm<br />Sunday: 11am–8pm</p></div>
       <nav aria-label="Store information"><h3>A little more</h3><Link href="/about">About Uncorked</Link><Link href="/vineyards">Wine by vineyard</Link><Link href="/tastings">Wine tastings</Link><Link href="/delivery">Delivery policy</Link><Link href="/shipping">Shipping policy</Link></nav>
-    </div><div className={styles.bottom}><span>© {new Date().getFullYear()} Uncorked Wines & Spirits</span><span>21+ only. Good times, enjoyed responsibly.</span><div><a href="https://www.uncorkedhoboken.com/privacy">Privacy</a><a href="https://www.uncorkedhoboken.com/terms">Terms</a></div></div></div></footer>
+    </div><div className={styles.bottom}><span>© {new Date().getFullYear()} Uncorked Wines & Spirits</span><span>21+ only. Good times, enjoyed responsibly.</span><div><Link href="/privacy">Privacy information</Link><Link href="/terms">Shopping information</Link></div></div></div></footer>
   </>;
 }

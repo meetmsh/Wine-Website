@@ -9,6 +9,7 @@ export function AgeGate({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<"checking" | "ask" | "ok" | "entered">("checking");
   const [denied, setDenied] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
+  const accepted = useRef(false);
   useEffect(() => {
     try {
       localStorage.removeItem("uncorked:age-verified");
@@ -23,12 +24,13 @@ export function AgeGate({ children }: { children: React.ReactNode }) {
     document.documentElement.style.overflow = "hidden";
   }, [status]);
   function accept() {
+    accepted.current = true;
     try { sessionStorage.setItem("uncorked:age-session", "yes"); } catch {}
     dialog.current?.close();
     document.documentElement.style.overflow = "";
     setStatus("entered"); // keep the dialog mounted so its exit transition can play
   }
-  return <>{children}{(status === "ask" || status === "entered") && <dialog ref={dialog} className={styles.gate} aria-labelledby="age-title" aria-describedby="age-text" tabIndex={-1} onCancel={e => e.preventDefault()}>
+  return <>{children}{(status === "ask" || status === "entered") && <dialog ref={dialog} className={styles.gate} aria-labelledby="age-title" aria-describedby="age-text" tabIndex={-1} onKeyDown={e => { if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); } }} onCancel={e => e.preventDefault()} onClose={() => { if (status === "ask" && !accepted.current) dialog.current?.showModal(); }}>
     <Wordmark size="large" />
     <h2 id="age-title">Are you <em>21 or older?</em></h2>
     <p id="age-text">You must be of legal drinking age to enter Uncorked Wines &amp; Spirits.</p>

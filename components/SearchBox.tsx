@@ -98,11 +98,11 @@ export function SearchBox() {
     <label className="sr-only" htmlFor="store-search">Search wine, spirits, beer and more</label>
     <input ref={input} id="store-search" type="search" name="q" placeholder="Search wine, spirits, beer…" maxLength={120} autoComplete="off" spellCheck={false} value={query}
       onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => setOpen(true)} onKeyDown={onKeyDown}
-      role="combobox" aria-expanded={open} aria-controls="search-panel" aria-autocomplete="list" aria-activedescendant={open && active >= 0 ? optionId(active) : undefined} />
+      role="combobox" aria-haspopup={q && options.length ? "listbox" : "dialog"} aria-expanded={open} aria-controls={q && options.length ? "search-results" : "search-panel"} aria-autocomplete="list" aria-activedescendant={open && active >= 0 && options[active] ? optionId(active) : undefined} />
     {query ? <button type="button" className={styles.clear} onClick={() => { setQuery(""); input.current?.focus(); }} aria-label="Clear search"><Icon name="close" width="14" height="14" /></button>
       : <kbd className={styles.kbd} aria-hidden="true">/</kbd>}
 
-    <div id="search-panel" className={styles.panel} hidden={!open} onMouseDown={e => e.preventDefault()}>
+    <div id="search-panel" className={styles.panel} hidden={!open} role={q && options.length ? undefined : "dialog"} aria-label={q && options.length ? undefined : "Discover wines"} onMouseDown={e => e.preventDefault()} onKeyDown={e => { if (e.key === "Escape") { e.preventDefault(); input.current?.focus(); setOpen(false); } }}>
       {!q ? <>
         <div className={styles.discover}>
           <section aria-labelledby="search-wine">
@@ -128,7 +128,7 @@ export function SearchBox() {
           <span className={styles.other}>Also {OTHER.map((o, i) => <span key={o.label}>{i ? " · " : ""}<Link href={o.href} onClick={close}>{o.label}</Link></span>)}</span>
         </div>
       </> : options.length ? <>
-        <ul role="listbox" aria-label={`Suggestions for ${q}`} className={styles.results}>
+        <ul id="search-results" role="listbox" aria-label={`Suggestions for ${q}`} className={styles.results}>
           {categoryHits.length > 0 && <li role="presentation" className={styles.group}>Categories</li>}
           {categoryHits.map((s, i) => <li key={s.href} id={optionId(i)} role="option" aria-selected={active === i} onMouseEnter={() => setActive(i)} onClick={() => go(s.href)} className={styles.row}>
             <span className={styles.catIcon} aria-hidden="true">{s.swatch ? <span className={styles.swatch} style={{ "--swatch": s.swatch } as React.CSSProperties} /> : <Icon name={s.meta === "Grape" ? "glass" : "search"} width="16" height="16" />}</span>

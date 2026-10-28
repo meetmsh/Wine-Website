@@ -12,6 +12,7 @@ type CellarContextValue = {
   add: (slug: string, quantity?: number) => void;
   remove: (slug: string) => void;
   removeAll: (slug: string) => void;
+  consume: (ordered: Record<string, number>) => void;
 };
 
 const CellarContext = createContext<CellarContextValue | null>(null);
@@ -73,9 +74,21 @@ export function CellarProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const consume = useCallback((ordered: Record<string, number>) => {
+    setItems(previous => {
+      const next = { ...previous };
+      for (const [id, quantity] of Object.entries(ordered)) {
+        const remaining = (next[id] ?? 0) - quantity;
+        if (remaining > 0) next[id] = remaining; else delete next[id];
+      }
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, []);
+
   const value = useMemo(
-    () => ({ items, add, remove, removeAll, count: Object.values(items).reduce((a, b) => a + b, 0) }),
-    [items, add, remove, removeAll],
+    () => ({ items, add, remove, removeAll, consume, count: Object.values(items).reduce((a, b) => a + b, 0) }),
+    [items, add, remove, removeAll, consume],
   );
 
   const wine = toast ? getStoreItem(toast.slug) : undefined;

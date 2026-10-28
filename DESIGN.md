@@ -91,7 +91,7 @@ components:
 
 **Creative North Star: "The Neighborhood Window Campaign"**
 
-Uncorked pairs its established grape logo with the confidence of a photographic shop-window campaign. Warm paper, burgundy and aged gold connect the shopping interface to the supplied neighborhood identity. High-contrast serif headlines provide expression; plain sans-serif controls keep browsing direct.
+Uncorked pairs its typeset wordmark with the confidence of a photographic shop-window campaign. Warm paper, burgundy and aged gold connect the shopping interface to the neighborhood identity. High-contrast serif headlines provide expression; plain sans-serif controls keep browsing direct.
 
 The system alternates generous campaign areas with compact, readable product shelves. Bottle photography, fine rules and quiet surface changes carry the visual structure. The durable identity comes from the logo, palette, typography and photographic material, rather than a fixed page composition. The first storefront expression is recorded in [.impeccable/surfaces/storefront.md](.impeccable/surfaces/storefront.md).
 
@@ -110,7 +110,7 @@ The palette combines wine-dark branding, aged metal and warm paper neutrals; fro
 - **Deep Oxblood:** the darker hover state for burgundy primary actions.
 
 ### Secondary
-- **Aged Brass:** focus outlines, the age-gate divider and the gold component of the supplied logo. Campaign imagery also uses locally defined pale-gold text and button treatments. These contextual cream and gold steps are deliberate material variations, rather than new brand accents.
+- **Aged Brass:** wordmark accents, campaign details and selected warm surfaces. Global focus outlines use oxblood; dark campaign regions use pale gold. These contextual cream and gold steps are deliberate material variations.
 
 ### Neutral
 - **Paper:** the default page and header surface.
@@ -120,7 +120,7 @@ The palette combines wine-dark branding, aged metal and warm paper neutrals; fro
 - **Tertiary Ink:** available as a global primitive; do not infer a separate text hierarchy without usage evidence.
 - **Fine Rule / Strong Rule:** shelf dividers, borders and underlined retail links.
 
-**The Brand Anchor Rule.** The store name is typeset, not an image (owner decision, 2026-10-21; refined 2026-10-23). The `Wordmark` component uses Fraunces (soft axis 100, display optical size): an upright "Un" at weight 500 runs into an italic "corked" at 400, a nod to the cork coming out. Below sits "WINES & SPIRITS" in Geist 600 caps tracked .34em, with the ampersand in brass. Sizes: 34px header, 40px footer and age gate, 27px mobile. Fraunces is reserved for the logotype; Bodoni Moda remains the editorial display face.
+**The Brand Anchor Rule.** The store name is typeset, not an image (owner decision, 2026-10-21). Use the current `Wordmark` component: Bodoni Moda shop-sign capitals at weight 600 and .07em tracking, with a smaller italic trade line framed by brass rules. Regular sizes are 25px on desktop and 21px on phones; the large footer and age-gate version uses 34px and 30px. Do not reintroduce the earlier grape image or historical split Fraunces lettering.
 
 ## Typography
 
@@ -176,7 +176,7 @@ Product cards have no enclosing shadow or rounded shell. A pale image rectangle 
 
 ### Inputs / Fields
 
-Search uses a white rectangular field with a fine neutral border; newsletter fields use pale paper within a burgundy region. Search and newsletter text remain (16px). Newsletter inputs are (52px) high. Labels and privacy information remain visible outside the fields. Keep the global focus outline and burgundy caret. Catalog sorting uses a native select with (16px) text and a (44px) minimum height; the product purchase quantity select uses (16px) text and a (51px) minimum height.
+Search uses a white pill with a fine neutral border; newsletter fields use pale paper within a burgundy region. Search and newsletter text remain (16px). Newsletter inputs are (52px) high. Labels and privacy information remain visible outside the fields. Keep the global focus outline and burgundy caret. Search placeholder text uses secondary ink at rest and on focus. Catalog sorting is a custom keyboard-operated listbox; product purchase quantities use a stepper.
 
 ### Navigation
 
@@ -192,7 +192,7 @@ Below Wines of the week, a Collections carousel replaces the former red/white pa
 
 ### Premium Layer (Linear-inspired, warm light)
 
-The owner chose to keep the warm paper world and borrow Linear's craft rather than its dark theme. The sticky header is frosted paper (`#fbfaf7d9`, 18px blur) and only gains a hairline and soft shadow once the page scrolls. Search is a white pill up to 760px wide with a hairline border, an inset highlight and an oxblood glow on focus; while it is idle, a hint line cycles example searches with a short blur-in. Search matches word starts and ignores accents. Scroll reveals add a 6px blur to the rise. Hero copy arrives in sequence (headline, text, actions) with a focus pull from 10px blur. Product and collection tiles carry a faint inner hairline and a cursor-following white spotlight on fine pointers. Primary buttons have an inner top highlight, a layered shadow and an arrow that nudges on hover. The offer band carries a single small "Terms and conditions apply." line under the ladder status.
+The owner chose to keep the warm paper world and borrow Linear's craft rather than its dark theme. The sticky header is frosted paper (`#fbfaf7d9`, 18px blur) and only gains a hairline and soft shadow once the page scrolls. Search is a white pill up to 760px wide with a hairline border, an inset highlight and an oxblood glow on focus; while it is idle, a hint line cycles example searches with a short blur-in. Search matches word starts and ignores accents. Scroll reveals use a short rise without blur. Hero copy arrives in sequence (headline, text, actions) with a focus pull from 10px blur. Product and collection tiles carry a faint inner hairline and a cursor-following white spotlight on fine pointers. Primary buttons have an inner top highlight, a layered shadow and an arrow that nudges on hover. The offer band carries a single small "Terms and conditions apply." line under the ladder status.
 
 ### Product Pages
 
@@ -200,7 +200,7 @@ Product pages pair a sticky photo (badges top-left: brass "Staff pick", oxblood 
 
 ### Mobile and Buying Controls
 
-Product pages use a quantity stepper (54px, square, hairline border) beside an Add to bag button that carries the running total; on phones a frosted sticky bar with name, price and Add to bag slides up once those controls scroll away. Product cards stack price above a full-width 44px add button on phones. The phone menu is one column of 54px rows with Wine, Beer and Spirits as accordions of their groups. The bag shows brand above name, unit price when quantity is above 1, a Remove link, and a sticky checkout footer (totals, loyalty, CTA). The offer band compresses to a one-line headline and tier tiles on phones so the hero shows on the first screen. Controls are square everywhere; pills are reserved for the search field, the bag pill and removable filter chips. Scroll reveals are a short rise without blur.
+Product pages use a quantity stepper (54px, square, hairline border) beside an Add to bag button that carries the running total; on phones a frosted sticky bar with name, price and Add to bag slides up once those controls scroll away. Product cards stack price above a full-width 44px add button on phones. The phone menu is one column of 54px rows with Wine, Beer and Spirits as accordions of their groups. The bag shows brand above name, unit price when quantity is above 1, a Remove link, and a sticky checkout footer with totals and CTA. The mobile offer places its headline and action together above the tier tiles and full offer terms. Controls are square everywhere; pills are reserved for the search field, the bag pill and removable filter chips. Scroll reveals are a short rise without blur.
 
 ### Wine Tastings
 
@@ -214,7 +214,15 @@ The tiered wine offer (4+ bottles 15%, 6+ 20%, 12+ 22%, supplied by the store) a
 
 ### Age Gate and Shopping Bag
 
-The entry gate is a centered (440px) native modal dialog over the storefront, with a blurred oxblood scrim; it cannot be dismissed with Escape. It combines the grape logo, serif headline, explicit 21+ confirmation, separate underage action, optional remembered choice and visible denial feedback. The bag is a full-height native dialog aligned to the right, with a width of up to (520px), fine-rule item rows and (44px) quantity controls. Preserve the visible sample-selection and disconnected-checkout disclosures.
+The entry gate is a centered (440px) native modal dialog over the storefront, with a blurred oxblood scrim; Escape is explicitly guarded and an unaccepted native close reopens it. It combines the typeset wordmark, serif headline, explicit 21+ confirmation, separate underage action and visible denial feedback. Acceptance lasts for the browser session only. The bag is a full-height native dialog aligned to the right, with a width of up to (520px), fine-rule item rows and (44px) quantity controls. Preserve the visible sample-selection and service-availability disclosures.
+
+### Checkout, Gift Cards and Service Availability
+
+The service-availability endpoint exposes three booleans, never provider credentials. Unavailable ordering shows a call-the-shop action before collecting contact details; unavailable email signup links to the shop's Instagram. At the owner's request, the eGift-card recipient/sender form and Pay and send action remain visible regardless of service configuration, with payment availability beside the button and an explicit no-payment error on an unavailable submission. Connected checkout clearly sends an order request: stock, final price, delivery and payment are confirmed by the shop. It does not collect or charge card details. The estimated order summary uses a native disclosure, open on desktop and collapsed on phones with the total visible. Quantity controls measure (44px).
+
+Gift amounts accept whole dollars from $10 to $500. Preserve invalid input and explain it; never strip punctuation into a different amount. Long recipient text wraps in the summary while the card preview truncates it. Grid tracks have a zero minimum so long names cannot widen the phone viewport. Gift and checkout totals use Geist with tabular figures. Pending submissions lock the relevant fields; unchanged retries reuse an idempotency key, forwarded to the provider. Providers must honor that key across deployments; the local replay cache is process-local.
+
+The local Privacy information and Shopping information pages describe actual website behavior. They are not represented as complete, approved business legal policies. Production service setup and the shop's complete policy text remain owner-supplied launch inputs.
 
 ## Do's and Don'ts
 

@@ -17,3 +17,11 @@ Store contact and hours verified from https://www.uncorkedhoboken.com/ on 2026-1
 
 ## Technical context
 Use .next-dev for development and .next for production to prevent chunk conflicts. Preserve legacy wine detail URLs, but storefront uses the new multi-category catalog. Product images and store assets carry source provenance.
+
+## Service and content readiness — October 28, 2026
+
+Availability is read from server-side HTTPS webhook configuration. Without it, checkout and gift-card pages present a phone contact before collecting personal information; the newsletter presents the shop's Instagram instead of an unusable form. Checkout is an order-request intake, with availability, final price and payment confirmed by the shop. Gift cards require an explicit provider issuance acknowledgement or an HTTPS payment redirect. Both providers must honor the forwarded Idempotency-Key for safe retries across deployments. The server reprices cart items; catalog prices remain illustrative.
+
+No actual provider URLs, tokens or approved business policy text were supplied during this implementation. The local Privacy information and Shopping information pages describe existing website behavior, and direct visitors to the shop for complete business terms. Do not describe these pages as approved legal policies or the services as live. There is no verified loyalty program; do not promise earned points. Search matches every entered word prefix in any order, preserving accent folding and wine-first results. Tastings remain a labeled sample calendar; the first Tuscan lineup now contains only its Chianti rather than an unrelated Chardonnay.
+
+Owner correction after the audit fixes: keep the full eGift-card form and Pay and send button visible even when its provider is unconfigured. Explain availability next to the action, preserve entered details, and clearly report that no payment was taken if an unavailable purchase is attempted. Checkout and newsletter availability behavior is unchanged.

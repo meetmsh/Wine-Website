@@ -13,8 +13,14 @@ export const categories = [
 ];
 export const wineCategories: Product["category"][] = ["red", "white", "rose", "sparkling"];
 export const fold = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
-// Word-start match, so "rose" finds Rosé but not Prosecco.
-export const matches = (text: string, query: string) => { const q = fold(query.trim()); return !q || fold(text).split(/[^a-z0-9]+/).some((_, i, words) => words.slice(i).join(" ").startsWith(q)); };
+// Match each word at a word boundary, in any order: "red wine" and "wine red"
+// agree, while "rose" still finds Rosé rather than Prosecco.
+export const matches = (text: string, query: string) => {
+  const terms = fold(query.trim()).split(/[^a-z0-9]+/).filter(Boolean);
+  if (!terms.length) return !query.trim();
+  const words = fold(text).split(/[^a-z0-9]+/).filter(Boolean);
+  return terms.every(term => words.some(word => word.startsWith(term)));
+};
 export const money = (amount: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(amount);
 export const priceOf = (p: Pick<Product, "price" | "salePrice">) => p.salePrice ?? p.price;
 export const onSale = (p: Pick<Product, "price" | "salePrice">) => p.salePrice !== undefined && p.salePrice < p.price;
