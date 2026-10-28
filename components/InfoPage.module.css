@@ -38,3 +38,18 @@
 .sectionPhoto { position: relative; aspect-ratio: 3 / 2; margin-bottom: 8px; overflow: hidden; background: #e7e1d6; }
 .sectionPhoto img { object-fit: cover; transition: transform 1400ms var(--ease); }
 @media(hover:hover) and (pointer:fine) { .section:hover .sectionPhoto img { transform: scale(1.03); } }
+
+/* Split layout: details left, portrait photo + visit panel right */
+.split { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,440px); gap: clamp(40px,6vw,96px); align-items: start; margin-top: 8px; }
+.main .head { padding-bottom: 36px; }
+.main .section { grid-template-columns: minmax(0,180px) minmax(0,1fr); gap: 16px 32px; }
+.side { position: sticky; top: calc(var(--header-h) + 24px); display: grid; gap: 20px; }
+.portrait { position: relative; aspect-ratio: 4 / 5; max-height: calc(100dvh - var(--header-h) - 300px); min-height: 360px; overflow: hidden; background: #e7e1d6; }
+.portrait img { object-fit: cover; }
+@media(max-width:960px) {
+  .split { grid-template-columns: 1fr; }
+  .side { position: static; }
+  .portrait { aspect-ratio: 4 / 3; max-height: none; min-height: 0; }
+}
+@media(max-width:700px) { .main .section { grid-template-columns: 1fr; gap: 10px; }.portrait { margin-inline: calc(var(--gutter) * -1); } }
+.side > .portrait { width: 100%; justify-self: stretch; }

@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "About Uncorked", description: "Uncor
 // Copy follows the store's own About page on uncorkedhoboken.com (retrieved 2026-10-27).
 export default function Page() {
   return <InfoPage crumb="About" title="A wine shop," emphasis="and a wine bar." lede="Take a bottle home, or stay for a glass. Uncorked is Hoboken’s neighborhood wine shop and bar on Washington Street, with an extensive selection of quality wines and spirits."
-    image="/images/uncorkedstore.png" imageAlt="Inside Uncorked: a lit wall of wine racks beside the spirits cases" imagePosition="center 52%"
+    image="/images/uncorkedstore.png" imageAlt="Inside Uncorked: a lit wall of wine racks beside the spirits cases" imagePosition="center 60%"
     sections={[
       { title: "The shop",
         body: <p>Our shelves hold an extensive assortment of wine and spirits, alongside craft beer, ready-to-drink cocktails and cigars. Stocking up for a wedding, planning a dinner party or just after a bottle for a quiet night in, we’ll help you find exactly what you’re looking for.</p> },
