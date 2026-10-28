@@ -95,6 +95,7 @@ export function GiftCard() {
 
         <label className={styles.age}><input type="checkbox" name="age" required /><span>I confirm I am <b>21 or older</b>.</span></label>
         {status.kind === "error" && <p className={styles.error} role="alert">{status.message}</p>}
+        <dl className={styles.summary}><div><dt>eGift card{to ? ` for ${to}` : ""}</dt><dd>{valid ? money(value) : "—"}</dd></div><div><dt>Delivery</dt><dd>Free, by email</dd></div><div className={styles.summaryTotal}><dt>Total</dt><dd>{valid ? money(value) : "—"}</dd></div></dl>
         <button type="submit" className={styles.pay} disabled={!valid || status.kind === "sending"}>
           <span>{status.kind === "sending" ? "Processing…" : "Pay and send"}</span><span className={styles.payTotal}>{valid ? money(value) : "—"}</span>
         </button>
