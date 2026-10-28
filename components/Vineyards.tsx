@@ -40,7 +40,7 @@ export function VineyardsPage() {
     {vineyards.map((v, i) => {
       const bottles = v.products.map(id => products.find(p => p.id === id)).filter(p => p !== undefined);
       return <article key={v.id} id={v.id} className={styles.chapter} data-flip={i % 2 === 1} data-reveal="self">
-        <div className={styles.photo}><Image src={v.image} alt={`Vineyards in ${v.region}, ${v.country}`} fill sizes="(max-width: 900px) 100vw, 58vw" quality={90} style={{ objectPosition: v.position }} /></div>
+        <div className={styles.photo}><Image src={v.image} alt={`Vineyards in ${v.region}, ${v.country}`} fill sizes="(max-width: 900px) 100vw, 60vw" quality={90} style={{ objectPosition: v.position }} /></div>
         <div className={styles.copy}>
           <h2>{v.producer}<span className={styles.place}>{v.region}, {v.country}</span></h2>
           <p className={styles.lede}>{v.lede}</p>
