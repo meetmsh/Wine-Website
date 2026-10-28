@@ -23,3 +23,8 @@
 @media(hover:hover) and (pointer:fine) { .field input:hover { border-bottom-color: #f3e3c980; }.fields .submit:hover:not(:disabled)::before { transform: scaleX(1); }.submit:hover:not(:disabled) .arrow svg { transform: translateX(4px); } }
 @media(max-width:560px) { .fields { grid-template-columns: 1fr; gap: 22px; }.fields .submit { grid-column: auto; justify-self: stretch; justify-content: space-between; } }
 @media(prefers-reduced-motion:reduce) { .field::after, .fields .submit::before, .arrow svg { transition: none; } }
+/* Hover matches the rest of the site: the label underlines, no sweep */
+.fields .submit::before { display: none; }
+.fields .submit { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: transparent; transition: text-decoration-color 220ms ease, transform 140ms var(--ease); }
+@media(hover:hover) and (pointer:fine) { .fields .submit:hover:not(:disabled) { text-decoration-color: currentColor; } }
+.fields .submit:focus-visible { text-decoration-color: currentColor; }
