@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InfoPage } from "@/components/InfoPage";
 
-export const metadata: Metadata = { title: "About Uncorked", description: "Uncorked Wines & Spirits is Hoboken's neighborhood wine shop and wine bar at 1450 Washington Street." };
+export const metadata: Metadata = { title: "About Uncorked", description: "Uncorked Wines & Spirits is Hoboken's neighborhood wine and spirits shop at 1450 Washington Street." };
 
 // Copy follows the store's own About page on uncorkedhoboken.com (retrieved 2026-10-27).
 export default function Page() {
-  return <InfoPage crumb="About" title="A wine shop," emphasis="and a wine bar." lede="Take a bottle home, or stay for a glass. Uncorked is Hoboken’s neighborhood wine shop and bar on Washington Street, with an extensive selection of quality wines and spirits."
+  return <InfoPage crumb="About" title="Your neighborhood" emphasis="bottle shop." lede="Uncorked is Hoboken’s wine and spirits shop on Washington Street: an extensive selection of quality wines, spirits, craft beer and more, chosen by people who love helping you find the right bottle."
     image="/images/uncorkedstore.png" imageAlt="Inside Uncorked: a lit wall of wine racks beside the spirits cases" imagePosition="center 60%"
     sections={[
       { title: "The shop",
