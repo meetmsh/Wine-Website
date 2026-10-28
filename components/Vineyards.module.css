@@ -108,3 +108,9 @@
 @media(max-width:900px) { .moreGrid { grid-template-columns: 1fr; }.moreCard { aspect-ratio: 16 / 10; } }
 @media(max-width:700px) { .more { padding-top: 60px; }.moreCopy { padding: 20px; }.moreCopy b { font-size: 24px; } }
 @media(prefers-reduced-motion:reduce) { .morePhoto, .explore a svg, .moreCta svg { transition: none; } }
+
+/* Slightly smaller vineyard photographs; text column gains the room */
+.chapter { grid-template-columns: minmax(0,1.12fr) minmax(0,1fr); }
+.chapter[data-flip=true] { grid-template-columns: minmax(0,1fr) minmax(0,1.12fr); }
+@media(min-width:901px) { .photo { height: min(520px, calc(100dvh - var(--header-h) - 48px)); } }
+@media(max-width:900px) { .chapter, .chapter[data-flip=true] { grid-template-columns: 1fr; }.photo { aspect-ratio: 16 / 10; } }
