@@ -9,11 +9,9 @@ export default function Page() {
   return <InfoPage crumb="About" title="A wine shop," emphasis="and a wine bar." lede="Take a bottle home, or stay for a glass. Uncorked is Hoboken’s neighborhood wine shop and bar on Washington Street, with an extensive selection of quality wines and spirits."
     image="/images/hero1.jpg" imageAlt="Friends raising glasses of red wine"
     sections={[
-      { title: "The shop", image: "/images/stock/tasting-bubbles.jpg", imageAlt: "Sparkling wine poured into a row of flutes", position: "center 45%",
+      { title: "The shop",
         body: <p>Our shelves hold an extensive assortment of wine and spirits, alongside craft beer, ready-to-drink cocktails and cigars. Stocking up for a wedding, planning a dinner party or just after a bottle for a quiet night in, we’ll help you find exactly what you’re looking for.</p> },
-      { title: "The wine bar", image: "/images/stock/tasting-tuscan-reds.jpg", imageAlt: "A glass of red wine", position: "center 40%",
-        body: <p>Stay for a glass. Our bar pours fine wines by the glass, cocktails and a big selection of beers on tap, including imports, so you can taste a favorite before you head home.</p> },
-      { title: "Service first", image: "/images/hero2.jpg", imageAlt: "Red wine being poured", position: "center 40%",
+      { title: "Service first",
         body: <><p>Our business is built on service. Your complete satisfaction is our top priority, and our friendly, knowledgeable staff are here to help you choose the right bottle for any occasion.</p><p>Join us for a <Link href="/tastings">wine tasting</Link>, or <Link href="/vineyards">meet the vineyards</Link> behind the bottles on our shelves.</p></> },
     ]} />;
 }

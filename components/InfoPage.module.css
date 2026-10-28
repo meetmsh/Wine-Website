@@ -4,7 +4,7 @@
 .head h1 { font-family: var(--font-serif); font-size: clamp(48px,6vw,86px); font-weight: 500; line-height: .98; letter-spacing: -.04em; text-wrap: balance; }
 .head h1 em { color: var(--oxblood); }
 .head p { margin-top: 22px; max-width: 54ch; font-size: 18px; line-height: 1.65; color: var(--ink-2); text-wrap: pretty; }
-.photo { position: relative; aspect-ratio: 21 / 9; overflow: hidden; background: #e7e1d6; }
+.photo { position: relative; aspect-ratio: 3 / 1; overflow: hidden; background: #e7e1d6; }
 .photo img { object-fit: cover; }
 .body { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,340px); gap: clamp(36px,6vw,96px); align-items: start; margin-top: 64px; }
 .section { display: grid; grid-template-columns: minmax(0,220px) minmax(0,1fr); gap: 24px 40px; padding: 30px 0; border-top: 1px solid var(--line); }
