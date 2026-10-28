@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Delivery policy", description: "Free
 // Zones, delivery windows and the fee under $40 are routed to a phone call until the store confirms them.
 export default function Page() {
   return <InfoPage crumb="Delivery policy" title="Delivered," emphasis="from around the corner." lede={`Free local delivery on orders over ${money(FREE_DELIVERY)} in Hoboken and nearby, or pick up your order at the shop on Washington Street.`}
-    image="/images/vineyard.jpg" imageAlt="Vineyard rows at golden hour"
+    image="/images/delivery.jpg" imageAlt="A courier carrying boxes on a city street" imagePosition="center 40%"
     sections={[
       { title: "Free local delivery", body: <><p>Orders over <b>{money(FREE_DELIVERY)}</b> after discounts are delivered free in Hoboken and nearby. Your bag shows how close you are as you shop.</p><p>For orders under {money(FREE_DELIVERY)}, we’ll confirm any delivery fee with you before your order goes out.</p></> },
       { title: "Where we deliver", body: <p>We deliver throughout Hoboken and to nearby neighborhoods. Not sure if you’re in range? Call us at <a href="tel:+19083822133">(908) 382-2133</a> and we’ll tell you right away.</p> },
