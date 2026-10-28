@@ -95,8 +95,8 @@ export function SearchBox() {
 
   return <form action="/shop" role="search" className={`${header.searchSlot} ${styles.box}`} data-open={open} onSubmit={close} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) close(); }}>
     <Icon name="search" width="18" height="18" className={styles.icon} />
-    <label className="sr-only" htmlFor="store-search">Search wines, grapes, regions and more</label>
-    <input ref={input} id="store-search" type="search" name="q" placeholder="Search wines, grapes, regions…" maxLength={120} autoComplete="off" spellCheck={false} value={query}
+    <label className="sr-only" htmlFor="store-search">Search wine, spirits, beer and more</label>
+    <input ref={input} id="store-search" type="search" name="q" placeholder="Search wine, spirits, beer…" maxLength={120} autoComplete="off" spellCheck={false} value={query}
       onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => setOpen(true)} onKeyDown={onKeyDown}
       role="combobox" aria-expanded={open} aria-controls="search-panel" aria-autocomplete="list" aria-activedescendant={open && active >= 0 ? optionId(active) : undefined} />
     {query ? <button type="button" className={styles.clear} onClick={() => { setQuery(""); input.current?.focus(); }} aria-label="Clear search"><Icon name="close" width="14" height="14" /></button>
