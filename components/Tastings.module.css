@@ -66,7 +66,7 @@
 .eventActions > span { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
 
 @media(hover:hover) and (pointer:fine) {
-  .feature:hover .featurePhoto { transform: scale(1.03); }
+  .feature:hover .featureTitle, .upcoming a:hover b { text-decoration-color: currentColor; }
   .upcoming a:hover { color: var(--oxblood); }.upcoming a:hover svg { color: var(--oxblood); transform: translateX(3px); }
   .allLink:hover { color: var(--oxblood); border-color: var(--oxblood); }
   .bottle button:not([data-added=true]):hover { background: var(--oxblood); color: #fff8ee; border-color: var(--oxblood); }
@@ -83,3 +83,8 @@
   .eventActions :global(.btn) { width: 100%; }
 }
 @media(prefers-reduced-motion:reduce) { .featurePhoto, .upcoming svg { transition: none; } }
+/* No photo zoom; titles underline on hover and keyboard focus */
+.featurePhoto { transition: none; transform: none; }
+.featureTitle, .upcoming b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; text-decoration-color: transparent; transition: text-decoration-color 220ms ease; }
+.feature:focus-visible .featureTitle, .upcoming a:focus-visible b { text-decoration-color: currentColor; }
+.upcoming .dateTile b { text-decoration: none; }
