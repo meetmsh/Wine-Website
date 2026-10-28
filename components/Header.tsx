@@ -36,7 +36,7 @@ export function Header() {
     <a href="#main-content" className={styles.skip}>Skip to content</a>
     <div className={styles.notice}><div className="container"><span className={styles.delivery}><Icon name="truck" width="16" height="16" /><span><b>Free local delivery</b> on orders over $40<span className={styles.deliveryArea}> · Hoboken and nearby</span></span></span><a className={styles.noticeAddress} href="https://maps.google.com/?q=1450+Washington+St+Hoboken+NJ" target="_blank" rel="noreferrer"><Icon name="pin" width="13" height="13" />1450 Washington St, Hoboken</a><span className={styles.noticeLinks}><Link href="/tastings"><Icon name="glass" width="14" height="14" />Wine tastings</Link><a href="/#newsletter">Join the email list</a><a href="https://www.instagram.com/uncorkedwineshoboken/" target="_blank" rel="noreferrer" aria-label="Follow @uncorkedwineshoboken on Instagram (opens in a new tab)"><Icon name="instagram" width="14" height="14" />Follow on Instagram</a></span></div></div>
     <header className={styles.header} data-scrolled={scrolled}>
-      <div className={`container ${styles.top}`}>
+      <div className={`container ${styles.top}`} onFocusCapture={e => { if (e.target instanceof HTMLElement && e.target.closest('[role="search"]')) setOpen(false); }}>
         <button className={styles.menu} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
         <Link href="/" className={styles.logo} aria-label="Uncorked Wines & Spirits, home"><Wordmark /></Link>
         <SearchBox />

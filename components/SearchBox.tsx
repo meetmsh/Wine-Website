@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { products, type Product } from "@/lib/catalog";
 import { bestSellers } from "@/lib/content";
 import { fold, matches, money, onSale, priceOf, wineCategories } from "@/lib/store";
@@ -63,6 +63,13 @@ export function SearchBox() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
   const input = useRef<HTMLInputElement>(null);
+  const form = useRef<HTMLFormElement>(null);
+  const dismiss = useCallback(() => {
+    setOpen(false);
+    setActive(-1);
+    const focused = document.activeElement;
+    if (focused instanceof HTMLElement && form.current?.contains(focused)) focused.blur();
+  }, []);
   const index = useMemo(buildIndex, []);
   const q = query.trim();
   const isWine = (p: Product) => wineCategories.includes(p.category);
@@ -82,31 +89,40 @@ export function SearchBox() {
     return () => window.removeEventListener("keydown", key);
   }, []);
   useEffect(() => setActive(-1), [q]);
+  useEffect(() => {
+    if (!open) return;
+    const outside = (e: PointerEvent) => {
+      if (e.target instanceof Node && !form.current?.contains(e.target)) dismiss();
+    };
+    document.addEventListener("pointerdown", outside);
+    return () => document.removeEventListener("pointerdown", outside);
+  }, [open, dismiss]);
 
-  function go(href: string) { setOpen(false); input.current?.blur(); router.push(href); }
+  function go(href: string) { dismiss(); router.push(href); }
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "ArrowDown" && options.length) { e.preventDefault(); setOpen(true); setActive(i => Math.min(i + 1, options.length - 1)); }
     else if (e.key === "ArrowUp" && options.length) { e.preventDefault(); setActive(i => Math.max(i - 1, -1)); }
-    else if (e.key === "Escape") { if (open) setOpen(false); else setQuery(""); }
+    else if (e.key === "Escape") { e.preventDefault(); dismiss(); }
     else if (e.key === "Enter" && active >= 0 && options[active]) { e.preventDefault(); go(options[active]); }
   }
   const optionId = (i: number) => `search-option-${i}`;
-  const close = () => setOpen(false);
+  const close = dismiss;
 
-  return <form action="/shop" role="search" className={`${header.searchSlot} ${styles.box}`} data-open={open} onSubmit={close} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) close(); }}>
+  return <form ref={form} action="/shop" role="search" className={`${header.searchSlot} ${styles.box}`} data-open={open} onSubmit={close} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) close(); }}>
     <Icon name="search" width="18" height="18" className={styles.icon} />
+    <button type="button" className={styles.back} onClick={dismiss} aria-label="Close search and go back to browsing"><Icon name="arrow" width="17" height="17" /><span>Back</span></button>
     <label className="sr-only" htmlFor="store-search">Search wine, spirits, beer and more</label>
-    <input ref={input} id="store-search" type="search" name="q" placeholder="Search wine, spirits, beer…" maxLength={120} autoComplete="off" spellCheck={false} value={query}
+    <input ref={input} id="store-search" type="search" name="q" placeholder={open ? "Find a bottle…" : "Search wine, spirits, beer…"} maxLength={120} autoComplete="off" autoCapitalize="none" enterKeyHint="search" spellCheck={false} value={query}
       onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => setOpen(true)} onKeyDown={onKeyDown}
       role="combobox" aria-haspopup={q && options.length ? "listbox" : "dialog"} aria-expanded={open} aria-controls={q && options.length ? "search-results" : "search-panel"} aria-autocomplete="list" aria-activedescendant={open && active >= 0 && options[active] ? optionId(active) : undefined} />
     {query ? <button type="button" className={styles.clear} onClick={() => { setQuery(""); input.current?.focus(); }} aria-label="Clear search"><Icon name="close" width="14" height="14" /></button>
       : <kbd className={styles.kbd} aria-hidden="true">/</kbd>}
 
-    <div id="search-panel" className={styles.panel} hidden={!open} role={q && options.length ? undefined : "dialog"} aria-label={q && options.length ? undefined : "Discover wines"} onMouseDown={e => e.preventDefault()} onKeyDown={e => { if (e.key === "Escape") { e.preventDefault(); input.current?.focus(); setOpen(false); } }}>
+    <div id="search-panel" className={styles.panel} hidden={!open} role={q && options.length ? undefined : "dialog"} aria-label={q && options.length ? undefined : "Discover wines"} onMouseDown={e => e.preventDefault()} onKeyDown={e => { if (e.key === "Escape") { e.preventDefault(); dismiss(); } }}>
       {!q ? <>
         <div className={styles.discover}>
           <section aria-labelledby="search-wine">
-            <p id="search-wine" className={styles.heading}>Shop wine</p>
+            <h2 id="search-wine" className={styles.discoverTitle}>Find your next bottle.</h2>
             <div className={styles.styles}>{STYLES.map(s => <Link key={s.label} href={s.href} onClick={close} className={styles.style}>
               <span className={styles.swatch} style={{ "--swatch": s.swatch } as React.CSSProperties} aria-hidden="true" />
               <span><b>{s.label}</b><small>{s.note}</small></span>
@@ -115,7 +131,7 @@ export function SearchBox() {
             <div className={styles.chips}>{POPULAR.map(term => <Link key={term} href={shopHref({ q: term })} onClick={close}>{term}</Link>)}</div>
           </section>
           <section aria-labelledby="search-trending" className={styles.trending}>
-            <p id="search-trending" className={styles.heading}>Trending wines</p>
+            <h3 id="search-trending" className={styles.bottlesTitle}>Bottles to explore</h3>
             <ul>{trending.map(p => <li key={p.id}><Link href={`/products/${p.id}`} onClick={close} className={styles.row}>
               <span className={styles.thumb}><Image src={p.image} alt="" width={80} height={104} quality={85} /></span>
               <span className={styles.rowText}><small>{p.brand}</small>{p.name}</span>
