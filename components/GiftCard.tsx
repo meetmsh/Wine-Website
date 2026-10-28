@@ -47,14 +47,16 @@ export function GiftCard() {
     <div className={styles.layout}>
       <div className={styles.intro}>
         <h1>Give a <em>good bottle.</em></h1>
-        <p>An Uncorked eGift card, delivered by email and spent on anything in the shop: wine, spirits, craft beer and more.</p>
-        <div className={styles.preview} aria-hidden="true">
+        <p>An Uncorked eGift card, delivered by email and spent on anything we pour: wine, spirits, craft beer and more.</p>
+        <ul className={styles.facts}><li>Delivered by email</li><li>Use online or in store</li><li>Any amount, $10 to $500</li></ul>
+        <div className={styles.stage} aria-hidden="true">
           <div className={styles.card}>
+            <span className={styles.monogram}>U</span>
             <span className={styles.cardBrand}>Uncorked<small>Wines &amp; Spirits</small></span>
             <span className={styles.cardAmount}>{valid ? money(value).replace(".00", "") : "$—"}</span>
-            <span className={styles.cardMeta}><span>{to ? `For ${to}` : "eGift card"}</span><span>Hoboken, NJ</span></span>
+            <span className={styles.cardMeta}><span>{to ? `For ${to}` : "A gift for you"}</span><span>eGift card</span></span>
           </div>
-          {note && <p className={styles.cardNote}>“{note}”{from && <span>— {from}</span>}</p>}
+          <p className={styles.cardNote} data-empty={!note}>{note ? <>“{note}”</> : "Your message will appear here."}<span>{from ? `— ${from}` : " "}</span></p>
         </div>
       </div>
 
@@ -96,10 +98,11 @@ export function GiftCard() {
 
         <label className={styles.age}><input type="checkbox" name="age" required /><span>I confirm I am <b>21 or older</b>.</span></label>
         {status.kind === "error" && <p className={styles.error} role="alert">{status.message}</p>}
+        <dl className={styles.summary}><div><dt>eGift card{to ? ` for ${to}` : ""}</dt><dd>{valid ? money(value) : "—"}</dd></div><div><dt>Delivery</dt><dd>Free, by email</dd></div><div className={styles.summaryTotal}><dt>Total</dt><dd>{valid ? money(value) : "—"}</dd></div></dl>
         <button type="submit" className={styles.pay} disabled={!valid || status.kind === "sending"}>
           <span>{status.kind === "sending" ? "Processing…" : "Pay and send"}</span><span className={styles.payTotal}>{valid ? money(value) : "—"}</span>
         </button>
-        <p className={styles.fine}>eGift cards are delivered by email. Ask us about terms and balances at (908) 382-2133.</p>
+        <p className={styles.fine}>eGift cards are delivered by email and can be used online or in store. Questions about a balance? Call (908) 382-2133.</p>
       </form>
     </div>
   </section>;
